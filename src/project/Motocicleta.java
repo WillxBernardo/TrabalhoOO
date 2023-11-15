@@ -43,8 +43,6 @@ public class Motocicleta extends Produto{
 	}
 	
 	
-
-	
 	// Métodos específicos da classe 
 	
 	// to String
@@ -60,5 +58,5 @@ public class Motocicleta extends Produto{
 		// método para calcular automaticamente o valor total
 	}
 	
-	
+	// Mudança
 }
