@@ -46,7 +46,7 @@ public class Motocicleta extends Produto{
 	// Métodos específicos da classe 
 	
 	// to String
-	public String exibir_moto(String modelo) {
+	public String exibir_moto() {
 		return "Modelo: " + modelo + ", preço: R$ " + valor + ", cor: " + cor + ", cilindrada: " + cilindrada + ", acessorios: " + acessorio;
 	}
 	

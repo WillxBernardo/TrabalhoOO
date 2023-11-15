@@ -1,4 +1,6 @@
 package dados;
+	
+import project.*;
 
 public class Dados {
 	private Motocicleta[] motocicletas;

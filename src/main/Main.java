@@ -1,6 +1,8 @@
 package main;
 
 import java.util.*;
+import project.*;
+import dados.*;
 
 public class Main {
 	
@@ -61,7 +63,7 @@ public class Main {
 		saida = saida + "01 - Cadastrar nova motocicleta\n";
 		saida = saida + "02 - Remover motocicleta existente\n";
 		saida = saida + "03 - Editar motocicleta existente\n";
-		saida = saida + "04 - Listar alunos\n";
+		saida = saida + "04 - Listar motocicletas\n";
 		
 		saida = saida + "05 - Cadastrar novo usuário\n";
 		saida = saida + "06 - Remover usuário existente\n";
@@ -72,6 +74,12 @@ public class Main {
 		saida = saida + "10 - Remover acessório existente\n";
 		saida = saida + "11 - Editar acessório existente\n";
 		saida = saida + "12 - Listar acessórios\n";
+		
+		// métodos específicos fora do CRUD
+		
+		saida = saida + "13 - Adicionar acessório na moto\n";
+		saida = saida + "14 - Adicionar moto há garagem\n";
+		saida = saida + "15 - Finalizar pedido\n";
 		return saida;
 	}
 }
