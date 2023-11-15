@@ -10,8 +10,6 @@ public class Dados {
 	
 	// Construtor
 	
-	
-	
 	public Dados() {
 		motocicletas = new Motocicleta[100];
 		acessorios = new Acessorio[100];
@@ -81,8 +79,7 @@ public class Dados {
 	public String listar_motos() {
 		String saida = "***** Lista de Motocicletas Cadastradas ***** \n" ;
 		for(int i = 0; i < nMotocicletas; i++) {
-			System.out.println(i);
-			saida = saida + "\n"+ motocicletas[i].getModelo().toString();
+			saida = saida + "\n"+ motocicletas[i].exibir_moto();
 		}
 		return saida;
 	};
@@ -90,25 +87,49 @@ public class Dados {
 	public String listar_usuarios() {
 		String saida = "***** Lista de Usuários Cadastrados ***** \n" ;
 		for(int i = 0; i < nUsuarios; i++) {
-			System.out.println(i);
-			saida = saida + "\n"+ usuarios[i].getNome().toString();
+			saida = saida + "\n"+ usuarios[i].exibir_usuario();
 		}
 		return saida;
 	};
 	public String listar_acessorios() {
 		String saida = "***** Lista de Acessórios Cadastrados ***** \n" ;
 		for(int i = 0; i < nAcessorios; i++) {
-			System.out.println(i);
-			saida = saida + "\n"+ acessorios[i].getNome().toString());
+			saida = saida + "\n"+ acessorios[i].exibir_acessorio();
 		}
 		return saida;
 	};
 
 	// Buscas
 	
-	public Motocicleta[] buscar_modelo(String modelo) {};
-	public Usuario[] buscar_usuario(String nome) {};
-	public Garagem[] buscar_acessorio(String nome) {};
+	public String buscar_modelo(String modelo) {
+		String saida = "***** Modelos de moto com nome: {} ***** \n" ;
+		for(int i = 0; i < nMotocicletas; i++) {
+			if (modelo.equals(motocicletas[i].getModelo())) {
+				saida = saida + "\n"+ motocicletas[i].exibir_moto();
+			}
+		}
+		return saida;
+	};
+	public String buscar_usuario(String nome) {
+		String saida = "***** Usários com nome: {} ***** \n" ;
+		for(int i = 0; i < nUsuarios; i++) {
+			if (nome.equals(usuarios[i].getNome())) {
+				saida = saida + "\n"+ usuarios[i].exibir_usuario();
+			}
+		}
+		return saida;
+	};
+	
+	public String buscar_acessorio(String nome){
+		String saida = "***** Acessórios com nome: {} ***** \n";
+		for(int i = 0; i < nAcessorios; i++) {
+			if (nome.equals(acessorios[i].getNome())) {
+				saida = saida + "\n"+ acessorios[i].exibir_acessorio();
+			}
+		}
+		return saida;
+	};
+	
 	
 	// Teste
 	
