@@ -60,7 +60,7 @@ public class Usuario {
 	}
 
 	// Métodos específicos da classe
-	public String exibir_usuario(String nome) {
+	public String exibir_usuario() {
 		return "Nome do usuário: " + nome + ", email: " + email + ", Motos na garagem: " + garagem + ", endereço: " + endereco;
 	} 	
 	
