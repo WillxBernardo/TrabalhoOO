@@ -38,7 +38,7 @@ public class Acessorio extends Produto {
 	// Métodos específicos da classe
 	
 	// to String
-	public String exibir_acessorio(String nome) {
+	public String exibir_acessorio() {
 		
 		return "Nome do acessório: " + nome + ", preço: R$ " + valor + ", cor: " + cor + ", posição: " + posicao;
 	}
@@ -47,5 +47,8 @@ public class Acessorio extends Produto {
 		return true;
 	}
 	
-	public void adicionar_acessorio_moto(String nome, String cor, double valor) {}
+	public void adicionar_acessorio_moto(String nome, String cor, double valor) {
+		//
+	}
+
 }
