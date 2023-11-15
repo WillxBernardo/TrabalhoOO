@@ -58,5 +58,4 @@ public class Motocicleta extends Produto{
 		// método para calcular automaticamente o valor total
 	}
 	
-	// Mudança
 }
