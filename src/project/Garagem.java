@@ -60,7 +60,7 @@ public class Garagem {
 		return true;
 	}
 	
-	public String finalizar_pedido(int id, String endereco, double valor_total) {
-		return "";
+	public String finalizar_pedido(Garagem garagem) {
+		return "Pedido finalizado com sucesso!";
 	}
 }
