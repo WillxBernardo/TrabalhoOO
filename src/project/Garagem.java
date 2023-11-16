@@ -4,6 +4,7 @@ public class Garagem {
 	private double valor_total;
 	private Usuario usuario;
 	private Motocicleta[] motocicletas;
+	private int nMotocicletas;
 	private String endereco;
 	
 	// construtor
@@ -12,7 +13,8 @@ public class Garagem {
 		this.valor_total = 0.0;
 		this.usuario = usuario;
 		this.endereco = endereco;
-		this.motocicletas = new Motocicleta[0]; 
+		this.motocicletas = new Motocicleta[0];
+		this.nMotocicletas = 0;
 	}
 	
 	
@@ -52,8 +54,13 @@ public class Garagem {
 	
 	// Métodos especificos da classe
 	
-	public String exibir_garagem(int id) {
-		return "";
+	public String exibir_garagem() {
+		String saida = "Garagem do usuário: " + usuario.getNome() +
+					"\nValor total: R$ " + valor_total + "\nEndereço: " + endereco + "\nLista de motos:";
+		for(int i = 0; i < nMotocicletas; i++) {
+			saida = saida + "\nMotocicleta: " + motocicletas[i].getModelo();
+		}
+		return saida;
 	}
 	
 	public boolean editar_garagem(Motocicleta motocicleta) {

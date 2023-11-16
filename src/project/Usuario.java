@@ -5,7 +5,6 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private Garagem garagem;
-	private String endereco;
 	
 	// Construtor
 	
@@ -50,19 +49,11 @@ public class Usuario {
 		this.garagem = garagem;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 
 	// Métodos específicos da classe
 	public String exibir_usuario() {
-		return "Nome do usuário: " + nome + ", email: " + email + ", Motos na garagem: " + garagem + ", endereço: " + endereco;
-	} 	
+		return "Nome do usuário: " + nome + ", email: " + email + ", \nValor total: R$ " + garagem.getMotocicletas()[0];
+	}
 	
 	public boolean editar_usuario(String nome) {
 		return true;

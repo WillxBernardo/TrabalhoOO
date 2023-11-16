@@ -54,8 +54,13 @@ public class Motocicleta extends Produto{
 		return true;
 	}
 	
-	public void adicionar_moto_garagem(String modelo, String cilindradas, String cor, double valor, String id) {
+	public void adicionar_moto_garagem(Motocicleta motocicleta, Usuario usuario) {
 		// método para calcular automaticamente o valor total
+		usuario.getGaragem().setValor_total(motocicleta.getValor());
+	}
+	
+	public void remover_moto_garagem(Motocicleta motocicleta, Usuario usuario) {
+		// manipulação
 	}
 	
 }

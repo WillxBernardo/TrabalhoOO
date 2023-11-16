@@ -76,7 +76,6 @@ public class Main {
 		saida = saida + "12 - Listar acessórios\n";
 		
 		// métodos específicos fora do CRUD
-		
 		saida = saida + "13 - Adicionar acessório na moto\n";
 		saida = saida + "14 - Adicionar moto há garagem\n";
 		saida = saida + "15 - Finalizar pedido\n";
