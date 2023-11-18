@@ -52,7 +52,7 @@ public class Usuario {
 
 	// Métodos específicos da classe
 	public String exibir_usuario() {
-		return "Nome do usuário: " + nome + ", email: " + email + ", \nValor total: R$ " + garagem.getMotocicletas()[0];
+		return "Nome do usuário: " + nome + ", email: " + email + ", \nValor total da garagem: R$ " + garagem.getValor_total();
 	}
 	
 	public boolean editar_usuario(String nome) {

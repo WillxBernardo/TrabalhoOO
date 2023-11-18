@@ -147,9 +147,9 @@ public class Dados {
 	public void preencherDados() {
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
-			motocicletas[i] = new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s));
-			acessorios[i] = new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s));
-			usuarios[i] = new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s));
+			motocicletas.add(new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s)));
+			acessorios.add(new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s))) ;
+			usuarios.add(new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s)));
 		}
 	}
 }

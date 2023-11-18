@@ -8,12 +8,12 @@ public class Main {
 	
 	private static Dados d = new Dados();
 	private static Scanner in = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
 		int op = -1;
 		int aux;
 		d.preencherDados();
-		
+		System.out.println(d.getMotocicletas().get(1).getModelo());
 		Dados dado = new Dados();
 		
 		// Execução do menu
