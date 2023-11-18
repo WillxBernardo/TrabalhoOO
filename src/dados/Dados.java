@@ -1,30 +1,31 @@
 package dados;
 	
 import project.*;
+import java.util.ArrayList;
 
 public class Dados {
-	private Motocicleta[] motocicletas;
+	private ArrayList<Motocicleta> motocicletas;
 	private int nMotocicletas = 0;
-	private Acessorio[] acessorios;
+	private ArrayList<Acessorio> acessorios;
 	private int nAcessorios = 0;
-	private Usuario[] usuarios;
+	private ArrayList<Usuario> usuarios;
 	private int nUsuarios = 0;
 	
 	// Construtor
 	
 	public Dados() {
-		motocicletas = new Motocicleta[100];
-		acessorios = new Acessorio[100];
-		usuarios = new Usuario[200];
+		motocicletas = new ArrayList<>();
+		acessorios = new ArrayList<>();
+		usuarios = new ArrayList<>();
 	}
 	
 	// Gets e sets
 	
-	public Motocicleta[] getMotocicletas() {
+	public ArrayList<Motocicleta> getMotocicletas() {
 		return motocicletas;
 	}
 
-	public void setMotocicletas(Motocicleta[] motocicletas) {
+	public void setMotocicletas(ArrayList<Motocicleta> motocicletas) {
 		this.motocicletas = motocicletas;
 	}
 
@@ -36,11 +37,11 @@ public class Dados {
 		this.nMotocicletas = nMotocicletas;
 	}
 
-	public Acessorio[] getAcessorios() {
+	public ArrayList<Acessorio> getAcessorios() {
 		return acessorios;
 	}
 
-	public void setAcessorios(Acessorio[] acessorios) {
+	public void setAcessorios(ArrayList<Acessorio> acessorios) {
 		this.acessorios = acessorios;
 	}
 
@@ -52,11 +53,11 @@ public class Dados {
 		this.nAcessorios = nAcessorios;
 	}
 
-	public Usuario[] getUsuarios() {
+	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(Usuario[] usuarios) {
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 
@@ -80,69 +81,75 @@ public class Dados {
 	
 	public String listar_motos() {
 		String saida = "***** Lista de Motocicletas Cadastradas ***** \n" ;
-		for(int i = 0; i < nMotocicletas; i++) {
-			saida = saida + "\n"+ motocicletas[i].exibir_moto();
-		}
+        if (motocicletas != null) {
+            for (Motocicleta moto : motocicletas) {
+                saida += "\nMotocicleta: " + moto.getModelo();
+            }
+        }
 		return saida;
+		
 	};
 	
 	public String listar_usuarios() {
 		String saida = "***** Lista de Usuários Cadastrados ***** \n" ;
-		for(int i = 0; i < nUsuarios; i++) {
-			saida = saida + "\n"+ usuarios[i].exibir_usuario();
-		}
+		if (usuarios != null) {
+            for (Usuario user : usuarios) {
+                saida += "\nNome do usuario: " + user.getNome();
+            }
+        }
 		return saida;
 	};
+	
 	public String listar_acessorios() {
 		String saida = "***** Lista de Acessórios Cadastrados ***** \n" ;
-		for(int i = 0; i < nAcessorios; i++) {
-			saida = saida + "\n"+ acessorios[i].exibir_acessorio();
-		}
+		if (acessorios != null) {
+            for (Acessorio aces : acessorios) {
+                saida += "\nMotocicleta: " + aces.getNome() + ", preco: R$ " + aces.getValor();
+            }
+        }
 		return saida;
 	};
 
 	// Buscas
 	
 	public String buscar_modelo(String modelo) {
-		String saida = "***** Modelos de moto com nome: {} ***** \n" ;
-		for(int i = 0; i < nMotocicletas; i++) {
-			if (modelo.equals(motocicletas[i].getModelo())) {
-				saida = saida + "\n"+ motocicletas[i].exibir_moto();
+		String saida = "";
+		for(Motocicleta moto: motocicletas) {
+			if (modelo.equals(moto.getModelo())) {
+				saida = moto.exibir_moto();
 			}
 		}
 		return saida;
 	};
+	
 	public String buscar_usuario(String nome) {
-		String saida = "***** Usários com nome: {} ***** \n" ;
-		for(int i = 0; i < nUsuarios; i++) {
-			if (nome.equals(usuarios[i].getNome())) {
-				saida = saida + "\n"+ usuarios[i].exibir_usuario();
+		String saida = "";
+		for(Usuario user: usuarios) {
+			if (nome.equals(user.getNome())) {
+				saida = user.exibir_usuario();
 			}
 		}
 		return saida;
 	};
 	
 	public String buscar_acessorio(String nome){
-		String saida = "***** Acessórios com nome: {} ***** \n";
-		for(int i = 0; i < nAcessorios; i++) {
-			if (nome.equals(acessorios[i].getNome())) {
-				saida = saida + "\n"+ acessorios[i].exibir_acessorio();
+		String saida = "";
+		for(Acessorio aces: acessorios) {
+			if (nome.equals(aces.getNome())) {
+				saida = aces.exibir_acessorio();
 			}
 		}
 		return saida;
 	};
 	
-	
-	// Teste
+	// Preenchimentos de dados
 	
 	public void preencherDados() {
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
-			motocicletas[i] = new Motocicleta("cor".concat(s), 0.0, "modelo".concat(s), "cilindrada".concat(s));
+			motocicletas[i] = new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s));
 			acessorios[i] = new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s));
 			usuarios[i] = new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s));
 		}
 	}
-	//é o marcos de novo
 }
-//é o marcos

@@ -1,9 +1,11 @@
 package project;
 
+import java.util.ArrayList;
+
 public class Garagem {
 	private double valor_total;
 	private Usuario usuario;
-	private Motocicleta[] motocicletas;
+	private ArrayList<Motocicleta> motocicletas;
 	private int nMotocicletas;
 	private String endereco;
 	
@@ -13,7 +15,7 @@ public class Garagem {
 		this.valor_total = 0.0;
 		this.usuario = usuario;
 		this.endereco = endereco;
-		this.motocicletas = new Motocicleta[0];
+		this.motocicletas = new ArrayList<>();
 		this.nMotocicletas = 0;
 	}
 	
@@ -36,11 +38,11 @@ public class Garagem {
 		this.usuario = usuario;
 	}
 	
-	public Motocicleta[] getMotocicletas() {
+	public ArrayList<Motocicleta> getMotocicletas() {
 		return motocicletas;
 	}
 	
-	public void setMotocicletas(Motocicleta[] motocicletas) {
+	public void setMotocicletas(ArrayList<Motocicleta> motocicletas) {
 		this.motocicletas = motocicletas;
 	}
 	
@@ -57,9 +59,11 @@ public class Garagem {
 	public String exibir_garagem() {
 		String saida = "Garagem do usuário: " + usuario.getNome() +
 					"\nValor total: R$ " + valor_total + "\nEndereço: " + endereco + "\nLista de motos:";
-		for(int i = 0; i < nMotocicletas; i++) {
-			saida = saida + "\nMotocicleta: " + motocicletas[i].getModelo();
-		}
+        if (motocicletas != null) {
+            for (Motocicleta moto : motocicletas) {
+                saida += "\nMotocicleta: " + moto.getModelo();
+            }
+        }
 		return saida;
 	}
 	

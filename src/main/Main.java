@@ -14,6 +14,8 @@ public class Main {
 		int aux;
 		d.preencherDados();
 		
+		Dados dado = new Dados();
+		
 		// Execução do menu
 		
 		while(op != 0) {
@@ -46,9 +48,7 @@ public class Main {
 						 	case 5:
 						 		adicionarMotoGaragem();
 						 		break;
-						 	case 6:
-						 		removerMotoGaragem();
-						 		break;
+						 		
 						 }
 					}
 					break;
@@ -71,6 +71,21 @@ public class Main {
 						 		break;
 						 	case 4:
 						 		d.listar_usuarios();
+						 		break;
+						 	case 5:
+						 		exibirGaragem();
+						 		break;
+						 	case 6:
+						 		editarEndGaragem();
+						 		break;
+						 	case 7:
+						 		removerMotoGaragem();
+						 		break;
+						 	case 8:
+						 		removerAcesMoto();
+						 		break;
+						 	case 9:
+						 		finalizarPedido();
 						 		break;
 						 }
 					}
@@ -98,9 +113,7 @@ public class Main {
 						 	case 5:
 						 		adicionarAcesMoto();
 						 		break;
-						 	case 6:
-						 		removerAcesMoto();
-						 		break;
+						 		
 						 	}
 						 }
 					
@@ -116,51 +129,57 @@ public class Main {
 	// Definição do menu:
 						 
 	public static String imprimirMenu() {
-		String saida = new String("Escolha uma das opcoes a seguir:\n");
-		saida = saida + "00 - Sair da aplicação\n";
+		String saida = new String("\nEscolha uma das opcoes a seguir:\n");
+		saida = saida + "00 - Sair da aplicacao\n";
 		saida = saida + "01 - Acessar menu de motocicletas\n";
 		saida = saida + "02 - Acessar menu de usuarios\n";
 		saida = saida + "03 - Acessar menu de acessorios\n";
-		
-		// O que fazer com esse método?
-		saida = saida + "17 - Finalizar pedido\n";
 		
 		return saida;
 	}
 	
 	public static String imprimirMenuMoto() {
-		String saida = new String("Menu de motocicletas:\n");
+		String saida = new String("\nMenu de motocicletas:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar nova motocicleta\n";
-		saida = saida + "02 - Remover motocicleta existente\n";
+		saida = saida + "02 - Excluir motocicleta existente\n";
 		saida = saida + "03 - Editar motocicleta existente\n";
-		saida = saida + "04 - Listar motocicletas\n";
-		saida = saida + "05 - Adicionar moto à garagem\n";
-		saida = saida + "06 - Remover moto da garagem\n";
+		saida = saida + "04 - Listar motocicletas cadastradas\n";
+		saida = saida + "05 - Adicionar moto na garagem\n";
+		
+		
 		return saida;
 	}
 	
 	public static String imprimirMenuUser() {
-		String saida = new String("Menu de usuario:\n");
+		String saida = new String("\nMenu de usuario:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar novo usuario\n";
-		saida = saida + "02 - Remover usuario existente\n";
+		saida = saida + "02 - Excluir usuario existente\n";
 		saida = saida + "03 - Editar usuario existente\n";
-		saida = saida + "04 - Listar usuarios\n";
+		saida = saida + "04 - Listar usuarios cadastrados\n";
+		saida = saida + "05 - Exibir garagem do usuario\n";
+		saida = saida + "06 - Editar endereco da garagem\n";
+		saida = saida + "07 - Remover moto da garagem\n";
+		saida = saida + "08 - Remover acessório da moto\n";
+		saida = saida + "09 - Finalizar pedido\n";
 		return saida;
 	}
 	
+	
 	public static String imprimirMenuAces() {
-		String saida = new String("Menu de usuario:\n");
+		String saida = new String("Menu de acessorio:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar novo acessorio\n";
-		saida = saida + "02 - Remover acessorio existente\n";
+		saida = saida + "02 - Excluir acessorio existente\n";
 		saida = saida + "03 - Editar acessorio existente\n";
 		saida = saida + "04 - Listar acessorios cadastrados\n";
 		saida = saida + "05 - Adicionar acessorio na moto\n";
-		saida = saida + "06 - Remover acessório da moto\n";
+		
 		return saida;
+		
 	}
+
 	
 	// Criação dos métodos utilizados no menu moto:
 	
@@ -206,6 +225,26 @@ public class Main {
 		return true;
 	}
 	
+	public static boolean exibirGaragem() {
+		System.out.println("Teste exibir garagem");
+		return true;
+	}
+	
+	public static boolean editarEndGaragem() {
+		System.out.println("Teste editar garagem");
+		return true;
+	}
+	
+	public static boolean removerAcesMoto() {
+		System.out.println("Teste adicionar moto garagem");
+		return true;
+	}
+	
+	public static boolean finalizarPedido() {
+		System.out.println("Teste finalizar pedido");
+		return true;
+	}
+	
 	// Criação dos métodos utilizados no menu acessorio:
 	
 	public static boolean cadastrarAces() {
@@ -228,8 +267,5 @@ public class Main {
 		return true;
 	}
 	
-	public static boolean removerAcesMoto() {
-		System.out.println("Teste adicionar moto garagem");
-		return true;
-	}
+	
 }
