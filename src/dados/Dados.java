@@ -117,7 +117,7 @@ public class Dados {
 	};
 	
 	public String listar_usuarios() {
-		String saida = "***** Lista de Usuários Cadastrados ***** \n" ;
+		String saida = "***** Lista de Usuarios Cadastrados ***** \n" ;
 		if (usuarios != null) {
             for (Usuario user : usuarios) {
                 saida += "\nNome do usuario: " + user.getNome();
@@ -127,7 +127,7 @@ public class Dados {
 	};
 	
 	public String listar_acessorios() {
-		String saida = "***** Lista de Acessórios Cadastrados ***** \n" ;
+		String saida = "***** Lista de Acessorios Cadastrados ***** \n" ;
 		if (acessorios != null) {
             for (Acessorio aces : acessorios) {
                 saida += "\nMotocicleta: " + aces.getNome() + ", preco: R$ " + aces.getValor();

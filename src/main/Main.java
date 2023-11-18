@@ -13,8 +13,7 @@ public class Main {
 		int op = -1;
 		int aux;
 		d.preencherDados();
-		System.out.println(d.buscar_usuario("nome1"));
-	
+		
 		// Execução do menu
 		
 		while(op != 0) {
@@ -142,7 +141,7 @@ public class Main {
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar nova motocicleta\n";
 		saida = saida + "02 - Excluir motocicleta existente\n";
-		saida = saida + "03 - Editar motocicleta existente\n";
+		saida = saida + "03 - Editar motocicleta existente\n"; // falta método
 		saida = saida + "04 - Listar motocicletas cadastradas\n";
 		saida = saida + "05 - Adicionar moto na garagem\n";
 		
@@ -155,13 +154,13 @@ public class Main {
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar novo usuario\n";
 		saida = saida + "02 - Excluir usuario existente\n";
-		saida = saida + "03 - Editar usuario existente\n";
+		saida = saida + "03 - Editar usuario existente\n"; // falta método
 		saida = saida + "04 - Listar usuarios cadastrados\n";
 		saida = saida + "05 - Exibir garagem do usuario\n";
-		saida = saida + "06 - Editar endereco da garagem\n";
+		saida = saida + "06 - Editar endereco da garagem\n"; // falta método
 		saida = saida + "07 - Remover moto da garagem\n";
 		saida = saida + "08 - Remover acessorio da moto\n";
-		saida = saida + "09 - Finalizar pedido\n";
+		saida = saida + "09 - Finalizar pedido\n"; // falta método
 		return saida;
 	}
 	
@@ -188,7 +187,12 @@ public class Main {
 	}
 	
 	public static boolean removerMoto() {
-		System.out.println("Teste remover moto");
+		System.out.println(d.listar_motos());
+		System.out.println("Digite exatamente o nome do modelo que deseja excluir:");
+		in.nextLine();
+		String modelo = in.nextLine();
+		int posicao = d.getMotocicletas().indexOf(d.buscar_modelo(modelo));
+		d.excluir_moto(posicao);;
 		return true;
 	}
 	
@@ -215,7 +219,12 @@ public class Main {
 	}
 	
 	public static boolean removerUser() {
-		System.out.println("Teste remover user");
+		System.out.println(d.listar_usuarios());
+		System.out.println("Digite exatamente o nome do usuario que deseja excluir:");
+		in.nextLine();
+		String user = in.nextLine();
+		int posicao = d.getUsuarios().indexOf(d.buscar_usuario(user));
+		d.excluir_usuario(posicao);
 		return true;
 	}
 	
@@ -252,7 +261,12 @@ public class Main {
 	}
 	
 	public static boolean removerAces() {
-		System.out.println("Teste remover acessorio");
+		System.out.println(d.listar_acessorios());
+		System.out.println("Digite exatamente o nome do acessorio que deseja excluir:");
+		in.nextLine();
+		String nome = in.nextLine();
+		int posicao = d.getAcessorios().indexOf(d.buscar_acessorio(nome));
+		d.excluir_acessorios(posicao);;
 		return true;
 	}
 	
