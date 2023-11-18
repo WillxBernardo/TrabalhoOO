@@ -170,12 +170,21 @@ public class Dados {
 	
 	// Preenchimentos de dados
 	
+	
 	public void preencherDados() {
+	    String[] modelos = {"Adventure", "Roadsters", "Classic", "Rocket", "Naosei"};
+
+	    for (int i = 0; i < modelos.length; i++) {
+	        String nomeModelo = modelos[i];
+
+	        // Motocicletas
+	        motocicletas.add(new Motocicleta("cor" + i, 1000.0, nomeModelo, "cilindrada" + i));
+	        motocicletas.add(new Motocicleta("cor" + (i + 5), 1000.0, nomeModelo, "cilindrada" + (i + 5)));
+	        nMotocicletas += 2;
+	    }
+	        
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
-			// Motocicletas
-			motocicletas.add(new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s)));
-			nMotocicletas ++;
 			
 			// Acessorios
 			acessorios.add(new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s))) ;
@@ -188,7 +197,6 @@ public class Dados {
 			nUsuarios ++;
 			Garagem gar = new Garagem(user, "endereco".concat(s));
 			user.setGaragem(gar);
-			
-		}
+		}	
 	}
 }
