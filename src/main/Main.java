@@ -13,9 +13,8 @@ public class Main {
 		int op = -1;
 		int aux;
 		d.preencherDados();
-		System.out.println(d.getMotocicletas().get(1).getModelo());
-		Dados dado = new Dados();
-		
+		System.out.println(d.buscar_usuario("nome1"));
+	
 		// Execução do menu
 		
 		while(op != 0) {
@@ -43,7 +42,7 @@ public class Main {
 						 		editarMoto();
 						 		break;
 						 	case 4:
-						 		d.listar_motos();
+						 		System.out.println(d.listar_motos());
 						 		break;
 						 	case 5:
 						 		adicionarMotoGaragem();
@@ -70,7 +69,7 @@ public class Main {
 						 		editarUser();
 						 		break;
 						 	case 4:
-						 		d.listar_usuarios();
+						 		System.out.println(d.listar_usuarios());
 						 		break;
 						 	case 5:
 						 		exibirGaragem();
@@ -108,7 +107,7 @@ public class Main {
 						 		editarAces();
 						 		break;
 						 	case 4:
-						 		d.listar_acessorios();
+						 		System.out.println(d.listar_acessorios());
 						 		break;
 						 	case 5:
 						 		adicionarAcesMoto();
@@ -161,14 +160,14 @@ public class Main {
 		saida = saida + "05 - Exibir garagem do usuario\n";
 		saida = saida + "06 - Editar endereco da garagem\n";
 		saida = saida + "07 - Remover moto da garagem\n";
-		saida = saida + "08 - Remover acessório da moto\n";
+		saida = saida + "08 - Remover acessorio da moto\n";
 		saida = saida + "09 - Finalizar pedido\n";
 		return saida;
 	}
 	
 	
 	public static String imprimirMenuAces() {
-		String saida = new String("Menu de acessorio:\n");
+		String saida = new String("\nMenu de acessorio:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar novo acessorio\n";
 		saida = saida + "02 - Excluir acessorio existente\n";

@@ -47,20 +47,11 @@ public class Motocicleta extends Produto{
 	
 	// to String
 	public String exibir_moto() {
-		return "Modelo: " + modelo + ", preço: R$ " + valor + ", cor: " + cor + ", cilindrada: " + cilindrada + ", acessorios: " + acessorio;
+		return "Modelo: " + modelo + ", preco: R$ " + valor + ", cor: " + cor + ", cilindrada: " + cilindrada + ", acessorios: " + acessorio;
 	}
 	
 	public boolean editar_moto(String modelo) {
 		return true;
-	}
-	
-	public void adicionar_moto_garagem(Motocicleta motocicleta, Usuario usuario) {
-		usuario.getGaragem().getMotocicletas().add(motocicleta);
-		//validador
-	}
-	
-	public void remover_moto_garagem(Motocicleta motocicleta, Usuario usuario) {
-		
 	}
 	
 }

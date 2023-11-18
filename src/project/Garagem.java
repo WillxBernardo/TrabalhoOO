@@ -54,6 +54,17 @@ public class Garagem {
 		this.endereco = endereco;
 	}
 	
+	public int getnMotocicletas() {
+		return nMotocicletas;
+	}
+
+
+	public void setnMotocicletas(int nMotocicletas) {
+		this.nMotocicletas = nMotocicletas;
+	}
+	
+	
+	
 	// Métodos especificos da classe
 	
 	public String exibir_garagem() {

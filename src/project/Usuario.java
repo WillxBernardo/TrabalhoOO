@@ -52,10 +52,29 @@ public class Usuario {
 
 	// Métodos específicos da classe
 	public String exibir_usuario() {
-		return "Nome do usuário: " + nome + ", email: " + email + ", \nValor total da garagem: R$ " + garagem.getValor_total();
+		return "Nome do usuario: " + nome + ", email: " + email + ", \nValor total da garagem: R$ " + garagem.getValor_total();
 	}
 	
 	public boolean editar_usuario(String nome) {
 		return true;
-	} 
+	}
+	
+	public void adicionar_moto_garagem(Motocicleta motocicleta) {
+		garagem.getMotocicletas().add(motocicleta);
+		double valor = garagem.getValor_total();
+		garagem.setValor_total(valor += motocicleta.getValor());
+		int qtd = garagem.getnMotocicletas();
+		garagem.setnMotocicletas(qtd++);
+	}
+	
+	public void remover_moto_garagem(int i) {
+		if (i < garagem.getnMotocicletas() && i >= 0) {
+			garagem.getMotocicletas().remove(i);
+			int qtd = garagem.getnMotocicletas();
+			garagem.setnMotocicletas(qtd--);
+			System.out.println("Motocicleta excluida com sucesso!");
+		} else {
+			System.out.println("Indice invalido");
+		}
+	}
 }

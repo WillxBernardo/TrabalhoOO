@@ -72,9 +72,35 @@ public class Dados {
 	
 	// Métodos especificos da classe
 	
-	public void excluir_usuario(String nome) {}
-	public void excluir_moto(String modelo) {}
-	public void excluir_acessorios(String nome) {}
+	public void excluir_usuario(int i) {
+		if (i < nUsuarios && i >= 0) {
+			usuarios.remove(i);
+			nUsuarios -= 1;
+			System.out.println("Usuario excluido com sucesso!");
+		} else {
+			System.out.println("Indice invalido");
+		}
+	}
+	
+	public void excluir_moto(int i) {
+		if (i < nMotocicletas && i >= 0) {
+			motocicletas.remove(i);
+			nMotocicletas -= 1;
+			System.out.println("Motocicleta excluida com sucesso!");
+		} else {
+			System.out.println("Indice invalido");
+		}
+	}
+	
+	public void excluir_acessorios(int i) {
+		if (i < nAcessorios && i >= 0) {
+			acessorios.remove(i);
+			nAcessorios -= 1;
+			System.out.println("Acessorio excluido com sucesso!");
+		} else {
+			System.out.println("Indice invalido");
+		}
+	}
 	
 	
 	// Listagens
@@ -112,34 +138,34 @@ public class Dados {
 
 	// Buscas
 	
-	public String buscar_modelo(String modelo) {
-		String saida = "";
+	public Motocicleta buscar_modelo(String modelo) {
+		int indice = 0;
 		for(Motocicleta moto: motocicletas) {
 			if (modelo.equals(moto.getModelo())) {
-				saida = moto.exibir_moto();
+				indice = motocicletas.indexOf(moto);
 			}
 		}
-		return saida;
+		return motocicletas.get(indice);
 	};
 	
-	public String buscar_usuario(String nome) {
-		String saida = "";
+	public Usuario buscar_usuario(String nome) {
+		int indice = 0;
 		for(Usuario user: usuarios) {
 			if (nome.equals(user.getNome())) {
-				saida = user.exibir_usuario();
+				indice = usuarios.indexOf(user);
 			}
 		}
-		return saida;
+		return usuarios.get(indice);
 	};
 	
-	public String buscar_acessorio(String nome){
-		String saida = "";
+	public Acessorio buscar_acessorio(String nome){
+		int indice = 0;
 		for(Acessorio aces: acessorios) {
 			if (nome.equals(aces.getNome())) {
-				saida = aces.exibir_acessorio();
+				indice = acessorios.indexOf(aces);
 			}
 		}
-		return saida;
+		return acessorios.get(indice);
 	};
 	
 	// Preenchimentos de dados
@@ -147,9 +173,22 @@ public class Dados {
 	public void preencherDados() {
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
+			// Motocicletas
 			motocicletas.add(new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s)));
+			nMotocicletas ++;
+			
+			// Acessorios
 			acessorios.add(new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s))) ;
-			usuarios.add(new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s)));
+			nAcessorios ++;
+			
+			// Criação do usuario com a garagem
+			Usuario user = new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s));
+			usuarios.add(user);
+			
+			nUsuarios ++;
+			Garagem gar = new Garagem(user, "endereco".concat(s));
+			user.setGaragem(gar);
+			
 		}
 	}
 }
