@@ -13,7 +13,7 @@ public class Main {
 		int op = -1;
 		int aux;
 		d.preencherDados();
-		
+
 		// Execução do menu
 		
 		while(op != 0) {
@@ -139,11 +139,11 @@ public class Main {
 	public static String imprimirMenuMoto() {
 		String saida = new String("\nMenu de motocicletas:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
-		saida = saida + "01 - Cadastrar nova motocicleta\n";
+		saida = saida + "01 - Cadastrar nova motocicleta\n"; // falta ser feito
 		saida = saida + "02 - Excluir motocicleta existente\n";
-		saida = saida + "03 - Editar motocicleta existente\n"; // falta método
+		saida = saida + "03 - Editar motocicleta existente\n"; // falta ser feito
 		saida = saida + "04 - Listar motocicletas cadastradas\n";
-		saida = saida + "05 - Adicionar moto na garagem\n";
+		saida = saida + "05 - Adicionar moto na garagem\n"; // falta ser feito
 		
 		
 		return saida;
@@ -152,15 +152,15 @@ public class Main {
 	public static String imprimirMenuUser() {
 		String saida = new String("\nMenu de usuario:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
-		saida = saida + "01 - Cadastrar novo usuario\n";
+		saida = saida + "01 - Cadastrar novo usuario\n"; // falta ser feito
 		saida = saida + "02 - Excluir usuario existente\n";
-		saida = saida + "03 - Editar usuario existente\n"; // falta método
+		saida = saida + "03 - Editar usuario existente\n"; // falta ser feito
 		saida = saida + "04 - Listar usuarios cadastrados\n";
-		saida = saida + "05 - Exibir garagem do usuario\n";
-		saida = saida + "06 - Editar endereco da garagem\n"; // falta método
-		saida = saida + "07 - Remover moto da garagem\n";
-		saida = saida + "08 - Remover acessorio da moto\n";
-		saida = saida + "09 - Finalizar pedido\n"; // falta método
+		saida = saida + "05 - Exibir garagem do usuario\n"; // falta ser feito
+		saida = saida + "06 - Editar endereco da garagem\n"; // falta ser feito ****
+		saida = saida + "07 - Remover moto da garagem\n"; // falta ser feito
+		saida = saida + "08 - Remover acessorio da moto\n"; // falta ser feito
+		saida = saida + "09 - Finalizar pedido\n";
 		return saida;
 	}
 	
@@ -168,11 +168,11 @@ public class Main {
 	public static String imprimirMenuAces() {
 		String saida = new String("\nMenu de acessorio:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
-		saida = saida + "01 - Cadastrar novo acessorio\n";
+		saida = saida + "01 - Cadastrar novo acessorio\n"; // falta ser feito
 		saida = saida + "02 - Excluir acessorio existente\n";
-		saida = saida + "03 - Editar acessorio existente\n";
+		saida = saida + "03 - Editar acessorio existente\n"; // falta ser feito
 		saida = saida + "04 - Listar acessorios cadastrados\n";
-		saida = saida + "05 - Adicionar acessorio na moto\n";
+		saida = saida + "05 - Adicionar acessorio na moto\n"; // falta ser feito
 		
 		return saida;
 		
@@ -249,7 +249,12 @@ public class Main {
 	}
 	
 	public static boolean finalizarPedido() {
-		System.out.println("Teste finalizar pedido");
+		System.out.println(d.listar_usuarios());
+		System.out.println("Digite exatamente o nome do usuario que deseja finalizar o pedido:");
+		in.nextLine();
+		String user = in.nextLine();
+		int posicao = d.getUsuarios().indexOf(d.buscar_usuario(user));
+		d.getUsuarios().get(posicao).finalizar_pedido();
 		return true;
 	}
 	

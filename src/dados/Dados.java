@@ -102,6 +102,16 @@ public class Dados {
 		}
 	}
 	
+	public void adicionar_acessorio_moto(Acessorio aces, Motocicleta moto) {
+		int pos = motocicletas.indexOf(moto);
+		motocicletas.get(pos).setAcessorio(aces);
+	}
+	
+	public void remover_acessorio_moto(Acessorio aces, Motocicleta moto) {
+		int pos = motocicletas.indexOf(moto);
+		motocicletas.get(pos).setAcessorio(null);
+	}
+	
 	
 	// Listagens
 	
@@ -172,24 +182,32 @@ public class Dados {
 	
 	
 	public void preencherDados() {
-	    String[] modelos = {"Adventure", "Roadsters", "Classic", "Rocket", "Naosei"};
+	    String[] modelos = {"Adventure", "Roadsters", "Classic", "Rocket", "Triumph Street Triple"};
 
 	    for (int i = 0; i < modelos.length; i++) {
 	        String nomeModelo = modelos[i];
-
-	        // Motocicletas
-	        motocicletas.add(new Motocicleta("cor" + i, 1000.0, nomeModelo, "cilindrada" + i));
-	        motocicletas.add(new Motocicleta("cor" + (i + 5), 1000.0, nomeModelo, "cilindrada" + (i + 5)));
+	        String s = String.valueOf(i);
+	        
+	        // Motocicletas e Acessorios
+	        Motocicleta moto1 = new Motocicleta("cor" + i, 1000.0, nomeModelo, "cilindrada" + i);
+	        Motocicleta moto2 = new Motocicleta("cor" + (i + 5), 1000.0, nomeModelo, "cilindrada" + (i + 5));
+	        
+	        Acessorio aces1 = new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s));
+			nAcessorios ++;
+			acessorios.add(aces1);
+			
+	        motocicletas.add(moto1);
+	        motocicletas.add(moto2);
+	        
+	        adicionar_acessorio_moto(aces1, moto1);
+			adicionar_acessorio_moto(aces1, moto2);
 	        nMotocicletas += 2;
+	        
 	    }
 	        
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
-			
-			// Acessorios
-			acessorios.add(new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s))) ;
-			nAcessorios ++;
-			
+						
 			// Criação do usuario com a garagem
 			Usuario user = new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s));
 			usuarios.add(user);

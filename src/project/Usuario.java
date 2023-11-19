@@ -1,5 +1,7 @@
 package project;
 
+import java.util.ArrayList;
+
 public class Usuario {
 	private String nome;
 	private String email;
@@ -49,8 +51,11 @@ public class Usuario {
 		this.garagem = garagem;
 	}
 
-
+	
+	
+	
 	// Métodos específicos da classe
+	
 	public String exibir_usuario() {
 		return "Nome do usuario: " + nome + ", email: " + email + ", \nValor total da garagem: R$ " + garagem.getValor_total();
 	}
@@ -58,6 +63,8 @@ public class Usuario {
 	public boolean editar_usuario(String nome) {
 		return true;
 	}
+	
+	// Adicionar as motos criadas nos usuarios criados ************
 	
 	public void adicionar_moto_garagem(Motocicleta motocicleta) {
 		garagem.getMotocicletas().add(motocicleta);
@@ -76,5 +83,13 @@ public class Usuario {
 		} else {
 			System.out.println("Indice invalido");
 		}
+	}
+	
+	public void finalizar_pedido() {
+		String saida = "Pedido efetuado com sucesso!\nRevise seu pedido:\n";
+		saida = saida + garagem.exibir_garagem();
+		garagem.setMotocicletas(new ArrayList<>());
+		garagem.setnMotocicletas(0);
+		System.out.println(saida);
 	}
 }

@@ -39,20 +39,11 @@ public class Acessorio extends Produto {
 	
 	// to String
 	public String exibir_acessorio() {
-		
 		return "Nome do acessorio: " + nome + ", preco: R$ " + valor + ", cor: " + cor + ", posicao: " + posicao;
 	}
 	
 	public boolean editar_acessorio(String nome) {
 		return true;
-	}
-	
-	public void adicionar_acessorio_moto(String nome, String cor, double valor) {
-		//
-	}
-	
-	public void remover_acessorio_moto(String nome, String cor, double valor) {
-		//
 	}
 
 }
