@@ -143,7 +143,7 @@ public class Main {
 		saida = saida + "02 - Excluir motocicleta existente\n";
 		saida = saida + "03 - Editar motocicleta existente\n"; // falta ser feito
 		saida = saida + "04 - Listar motocicletas cadastradas\n";
-		saida = saida + "05 - Adicionar moto na garagem\n"; // falta ser feito
+		saida = saida + "05 - Adicionar moto na garagem\n";
 		
 		
 		return saida;
@@ -156,9 +156,9 @@ public class Main {
 		saida = saida + "02 - Excluir usuario existente\n";
 		saida = saida + "03 - Editar usuario existente\n"; // falta ser feito
 		saida = saida + "04 - Listar usuarios cadastrados\n";
-		saida = saida + "05 - Exibir garagem do usuario\n"; // falta ser feito
+		saida = saida + "05 - Exibir garagem do usuario\n";
 		saida = saida + "06 - Editar endereco da garagem\n"; // falta ser feito ****
-		saida = saida + "07 - Remover moto da garagem\n"; // falta ser feito
+		saida = saida + "07 - Remover moto da garagem\n"; 
 		saida = saida + "08 - Remover acessorio da moto\n"; // falta ser feito
 		saida = saida + "09 - Finalizar pedido\n";
 		return saida;
@@ -181,109 +181,154 @@ public class Main {
 	
 	// Criação dos métodos utilizados no menu moto:
 	
-	public static boolean cadastrarMoto() {
+	public static void cadastrarMoto() {
 		System.out.println("Teste cadastro moto");
-		return true;
 	}
 	
-	public static boolean removerMoto() {
+	public static void removerMoto() {
 		System.out.println(d.listar_motos());
 		System.out.println("Digite exatamente o nome do modelo que deseja excluir:");
 		in.nextLine();
 		String modelo = in.nextLine();
-		int posicao = d.getMotocicletas().indexOf(d.buscar_modelo(modelo));
-		d.excluir_moto(posicao);;
-		return true;
+		Motocicleta moto = d.buscar_modelo(modelo); 
+		if(d.getMotocicletas().indexOf(moto) != -1) {
+			int posicao = d.getMotocicletas().indexOf(moto);
+			d.excluir_moto(posicao);
+		} else {
+			System.out.print("Motocicleta nao encontrada. Digite corretamente o nome do modelo!");
+		}
 	}
 	
-	public static boolean editarMoto() {
+	public static void editarMoto() {
 		System.out.println("Teste editar moto");
-		return true;
 	}
 	
-	public static boolean adicionarMotoGaragem() {
-		System.out.println("Teste adicionar moto garagem");
-		return true;
+	public static void adicionarMotoGaragem() {
+		System.out.println("Digite exatamente o nome do usuario:");
+		in.nextLine();
+		String nome = in.nextLine();
+		Usuario user = d.buscar_usuario(nome);
+		if(d.getUsuarios().indexOf(user) != -1) {
+			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:");
+			in.nextLine();
+			String modelo = in.nextLine();
+			Motocicleta moto = d.buscar_modelo(modelo); 
+			if(d.getMotocicletas().indexOf(moto) != -1) {
+				user.adicionar_moto_garagem(moto);
+			} else {
+				System.out.print("Motocicleta nao encontrada. Digite corretamente o nome do modelo!");
+			}
+		} else {
+			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+		}
 	}
 	
-	public static boolean removerMotoGaragem() {
-		System.out.println("Teste remover moto garagem");
-		return true;
+	public static void removerMotoGaragem() {
+		System.out.println("Digite exatamente o nome do usuario:");
+		in.nextLine();
+		String nome = in.nextLine();
+		Usuario user = d.buscar_usuario(nome);
+		if(d.getUsuarios().indexOf(user) != -1) {
+			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:");
+			in.nextLine();
+			String modelo = in.nextLine();
+			Motocicleta moto = d.buscar_modelo(modelo);
+			int posicao = d.getMotocicletas().indexOf(moto);
+			if( posicao != -1) {
+				user.remover_moto_garagem(posicao);;
+			} else {
+				System.out.print("Motocicleta nao encontrada. Digite corretamente o nome do modelo!");
+			}
+		} else {
+			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+		};
 	}
 	
 	// Criação dos métodos utilizados no menu user:
 	
-	public static boolean cadastrarUser() {
+	public static void cadastrarUser() {
 		System.out.println("Teste cadastro user");
-		return true;
 	}
 	
-	public static boolean removerUser() {
+	public static void removerUser() {
 		System.out.println(d.listar_usuarios());
 		System.out.println("Digite exatamente o nome do usuario que deseja excluir:");
 		in.nextLine();
-		String user = in.nextLine();
-		int posicao = d.getUsuarios().indexOf(d.buscar_usuario(user));
-		d.excluir_usuario(posicao);
-		return true;
+		String nome = in.nextLine();
+		Usuario user = d.buscar_usuario(nome);
+		if(d.getUsuarios().indexOf(user) != -1) {
+			int posicao = d.getUsuarios().indexOf(user);
+			d.excluir_usuario(posicao);
+		} else {
+			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+		}
 	}
 	
-	public static boolean editarUser() {
+	public static void editarUser() {
 		System.out.println("Teste editar user");
-		return true;
 	}
 	
-	public static boolean exibirGaragem() {
-		System.out.println("Teste exibir garagem");
-		return true;
+	public static void exibirGaragem() {
+		System.out.println(d.listar_usuarios());
+		System.out.println("Digite exatamente o nome do usuario que deseja excluir:");
+		in.nextLine();
+		String nome = in.nextLine();
+		Usuario user = d.buscar_usuario(nome);
+		if(d.getUsuarios().indexOf(user) != -1) {
+			user.getGaragem().exibir_garagem();
+		} else {
+			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+		};
 	}
 	
-	public static boolean editarEndGaragem() {
+	public static void editarEndGaragem() {
 		System.out.println("Teste editar garagem");
-		return true;
 	}
 	
-	public static boolean removerAcesMoto() {
+	public static void removerAcesMoto() {
 		System.out.println("Teste adicionar moto garagem");
-		return true;
 	}
 	
-	public static boolean finalizarPedido() {
+	public static void finalizarPedido() {
 		System.out.println(d.listar_usuarios());
 		System.out.println("Digite exatamente o nome do usuario que deseja finalizar o pedido:");
 		in.nextLine();
-		String user = in.nextLine();
-		int posicao = d.getUsuarios().indexOf(d.buscar_usuario(user));
-		d.getUsuarios().get(posicao).finalizar_pedido();
-		return true;
+		String nome = in.nextLine();
+		Usuario user = d.buscar_usuario(nome);
+		if(d.getUsuarios().indexOf(user) != -1) {
+			int posicao = d.getUsuarios().indexOf(user);
+			d.getUsuarios().get(posicao).finalizar_pedido();
+		} else {
+			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+		}
 	}
 	
 	// Criação dos métodos utilizados no menu acessorio:
 	
-	public static boolean cadastrarAces() {
+	public static void cadastrarAces() {
 		System.out.println("Teste cadastro acessorio");
-		return true;
 	}
 	
-	public static boolean removerAces() {
+	public static void removerAces() {
 		System.out.println(d.listar_acessorios());
 		System.out.println("Digite exatamente o nome do acessorio que deseja excluir:");
 		in.nextLine();
 		String nome = in.nextLine();
-		int posicao = d.getAcessorios().indexOf(d.buscar_acessorio(nome));
-		d.excluir_acessorios(posicao);;
-		return true;
+		Acessorio aces = d.buscar_acessorio(nome);
+		if(d.getAcessorios().indexOf(aces) != -1) {
+			int posicao = d.getUsuarios().indexOf(aces);
+			d.excluir_acessorios(posicao);
+		} else {
+			System.out.print("Acessorio nao encontrado. Digite corretamente o nome do acessorio!");
+		}
 	}
 	
-	public static boolean editarAces() {
+	public static void editarAces() {
 		System.out.println("Teste editar acessorio");
-		return true;
 	}
 	
-	public static boolean adicionarAcesMoto() {
+	public static void adicionarAcesMoto() {
 		System.out.println("Teste adicionar moto garagem");
-		return true;
 	}
-	
 	
 }
