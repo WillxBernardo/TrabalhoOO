@@ -211,10 +211,16 @@ public class Dados {
 			// Criação do usuario com a garagem
 			Usuario user = new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s));
 			usuarios.add(user);
-			
 			nUsuarios ++;
 			Garagem gar = new Garagem(user, "endereco".concat(s));
 			user.setGaragem(gar);
+			//--------------leticiao p resolver em sala:
+			//adicionar_moto_garagem(moto[s])<-nome de cada modelo; perguntar pro will como usar metodos de fora da  classe;
+			//dúvida: estamos identificando as motos pelos modelos? se sim, tem duas de cada modelo, mas eles 
+			//são identificaveis pelos acessórios que são diferentes.
+			//to ficano maluca. Como vamos selecionar a garagem e o usuário (talvez pedindo o user e a garagem no argumento)? 
+			//hmmm... tem q ver isso daí. pra mim, mesmo na versão antiga as coisas q criamos não tinham conexão umas com as 
+			//outras nessa parte do codigo.
 		}	
 	}
 }
