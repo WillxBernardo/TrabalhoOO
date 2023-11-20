@@ -139,7 +139,7 @@ public class Main {
 	public static String imprimirMenuMoto() {
 		String saida = new String("\nMenu de motocicletas:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
-		saida = saida + "01 - Cadastrar nova motocicleta\n"; // falta ser feito
+		saida = saida + "01 - Cadastrar nova motocicleta\n";
 		saida = saida + "02 - Excluir motocicleta existente\n";
 		saida = saida + "03 - Editar motocicleta existente\n"; // falta ser feito
 		saida = saida + "04 - Listar motocicletas cadastradas\n";
@@ -152,7 +152,7 @@ public class Main {
 	public static String imprimirMenuUser() {
 		String saida = new String("\nMenu de usuario:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
-		saida = saida + "01 - Cadastrar novo usuario\n"; // falta ser feito
+		saida = saida + "01 - Cadastrar novo usuario\n";
 		saida = saida + "02 - Excluir usuario existente\n";
 		saida = saida + "03 - Editar usuario existente\n"; // falta ser feito
 		saida = saida + "04 - Listar usuarios cadastrados\n";
@@ -168,7 +168,7 @@ public class Main {
 	public static String imprimirMenuAces() {
 		String saida = new String("\nMenu de acessorio:\n");
 		saida = saida + "00 - Voltar ao menu anterior\n";
-		saida = saida + "01 - Cadastrar novo acessorio\n"; // falta ser feito
+		saida = saida + "01 - Cadastrar novo acessorio\n";
 		saida = saida + "02 - Excluir acessorio existente\n";
 		saida = saida + "03 - Editar acessorio existente\n"; // falta ser feito
 		saida = saida + "04 - Listar acessorios cadastrados\n";
@@ -182,7 +182,9 @@ public class Main {
 	// Criação dos métodos utilizados no menu moto:
 	
 	public static void cadastrarMoto() {
-		System.out.println("Teste cadastro moto");
+		Motocicleta moto = lerDadosMoto();
+		d.getMotocicletas().add(moto);
+		System.out.println("Motocicleta cadastrada com sucesso!");
 	}
 	
 	public static void removerMoto() {
@@ -246,10 +248,33 @@ public class Main {
 		}
 	}
 	
+	// Metodo para leitura de dados de uma moto
+	
+		public static Motocicleta lerDadosMoto() {
+			String modelo;
+			String cilindrada; 
+			double valor;
+			String cor;
+			in.nextLine();
+			System.out.println("Digite o modelo da motocicleta:");
+			modelo = in.nextLine();
+			System.out.println("Digite a cilindrada da motocicleta:");
+			cilindrada = in.nextLine();
+			System.out.println("Digite o preco da motocicleta: R$ ");
+			valor = in.nextDouble();
+			System.out.println("Digite a cor da motocicleta:");
+			cor = in.nextLine();
+			
+			Motocicleta moto = new Motocicleta(cor, valor, modelo, cilindrada);
+			return moto;	
+		}
+		
 	// Criação dos métodos utilizados no menu user:
 	
 	public static void cadastrarUser() {
-		System.out.println("Teste cadastro user");
+		Usuario user = lerDadosUsuario();
+		d.getUsuarios().add(user);
+		System.out.println("Usuario cadastrado com sucesso!");
 	}
 	
 	public static void removerUser() {
@@ -305,10 +330,34 @@ public class Main {
 		}
 	}
 	
+	// Metodo para leitura de dados de um usuario
+	
+	public static Usuario lerDadosUsuario() {
+		String nome;
+		String email; 
+		String senha; 
+		String endereco;
+		in.nextLine();
+		System.out.println("Digite o nome do usuario: ");
+		nome = in.nextLine();
+		System.out.println("Digite o email do usuario:");
+		email = in.nextLine();
+		System.out.println("Digite a senha do usuario:");
+		senha = in.nextLine();
+		System.out.println("Digite o endereco do usuario:");
+		endereco = in.nextLine();
+		Usuario user = new Usuario(nome, email, senha);
+		Garagem gar = new Garagem(user, endereco);
+		user.setGaragem(gar);
+		return user;	
+	}
+	
 	// Criação dos métodos utilizados no menu acessorio:
 	
 	public static void cadastrarAces() {
-		System.out.println("Teste cadastro acessorio");
+		Acessorio aces = lerDadosAcessorio();
+		d.getAcessorios().add(aces);
+		System.out.println("Acessorio cadastrado com sucesso!");
 	}
 	
 	public static void removerAces() {
@@ -331,5 +380,25 @@ public class Main {
 	
 	public static void adicionarAcesMoto() {
 		System.out.println("Teste adicionar moto garagem");
+	}
+	
+	// Metodo para leitura de dados de um acessorio
+	
+	public static Acessorio lerDadosAcessorio() {
+		String nome;
+		String posicao; 
+		double valor; 
+		String cor;
+		in.nextLine();
+		System.out.println("Digite o nome do acessorio:");
+		nome = in.nextLine();
+		System.out.println("Digite a posicao do acessorio:");
+		posicao = in.nextLine();
+		System.out.println("Digite o preco do acessorio: R$ ");
+		valor = in.nextDouble();
+		System.out.println("Digite a cor do acessorio:");
+		cor = in.nextLine();
+		Acessorio aces = new Acessorio(cor, valor, nome, posicao);
+		return aces;
 	}
 }

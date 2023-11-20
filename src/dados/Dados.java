@@ -5,11 +5,8 @@ import java.util.ArrayList;
 
 public class Dados {
 	private ArrayList<Motocicleta> motocicletas;
-	private int nMotocicletas = 0;
 	private ArrayList<Acessorio> acessorios;
-	private int nAcessorios = 0;
 	private ArrayList<Usuario> usuarios;
-	private int nUsuarios = 0;
 	
 	// Construtor
 	
@@ -29,28 +26,12 @@ public class Dados {
 		this.motocicletas = motocicletas;
 	}
 
-	public int getnMotocicletas() {
-		return nMotocicletas;
-	}
-
-	public void setnMotocicletas(int nMotocicletas) {
-		this.nMotocicletas = nMotocicletas;
-	}
-
 	public ArrayList<Acessorio> getAcessorios() {
 		return acessorios;
 	}
 
 	public void setAcessorios(ArrayList<Acessorio> acessorios) {
 		this.acessorios = acessorios;
-	}
-
-	public int getnAcessorios() {
-		return nAcessorios;
-	}
-
-	public void setnAcessorios(int nAcessorios) {
-		this.nAcessorios = nAcessorios;
 	}
 
 	public ArrayList<Usuario> getUsuarios() {
@@ -61,30 +42,19 @@ public class Dados {
 		this.usuarios = usuarios;
 	}
 
-	public int getnUsuarios() {
-		return nUsuarios;
-	}
-
-	public void setnUsuarios(int nUsuarios) {
-		this.nUsuarios = nUsuarios;
-	}
-	
 	
 	// Métodos especificos da classe
 	
 	public void excluir_usuario(int i) {
 		usuarios.remove(i);
-		nUsuarios -= 1;
 	}
 	
 	public void excluir_moto(int i) {
 		motocicletas.remove(i);
-		nMotocicletas -= 1;
 	}
 	
 	public void excluir_acessorios(int i) {
 		acessorios.remove(i);
-		nAcessorios -= 1;
 	}
 	
 	public void adicionar_acessorio_moto(Acessorio aces, Motocicleta moto) {
@@ -185,9 +155,6 @@ public class Dados {
 			
 			Motocicleta moto = new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s));
 	        Acessorio aces = new Acessorio("cor".concat(s), 10.0, "nome".concat(s), "posicao".concat(s));
-	        nAcessorios ++;
-			nMotocicletas++;
-			nUsuarios ++;
 			acessorios.add(aces);
 	        motocicletas.add(moto);
 	        adicionar_acessorio_moto(aces, moto);
