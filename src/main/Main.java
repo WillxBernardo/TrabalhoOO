@@ -15,7 +15,7 @@ public class Main {
 		d.preencherDados();
 
 		// Execução do menu
-		
+
 		while(op != 0) {
 			System.out.print(imprimirMenu());
 			op = in.nextInt();
@@ -187,16 +187,17 @@ public class Main {
 	
 	public static void removerMoto() {
 		System.out.println(d.listar_motos());
-		System.out.println("Digite exatamente o nome do modelo que deseja excluir:");
+		System.out.println("Digite exatamente o nome do modelo que deseja excluir:\n");
 		in.nextLine();
 		String modelo = in.nextLine();
-		Motocicleta moto = d.buscar_modelo(modelo); 
-		if(d.getMotocicletas().indexOf(moto) != -1) {
-			int posicao = d.getMotocicletas().indexOf(moto);
-			d.excluir_moto(posicao);
+		if (d.buscar_modelo(modelo) == null) {
+			System.out.println("Motocicleta nao encontrada!\n");
 		} else {
-			System.out.print("Motocicleta nao encontrada. Digite corretamente o nome do modelo!");
+			int posicao = d.getMotocicletas().indexOf(d.buscar_modelo(modelo));
+			d.excluir_moto(posicao);
+			System.out.println("Motocicleta excluida com sucesso!\n");
 		}
+		
 	}
 	
 	public static void editarMoto() {
@@ -204,44 +205,45 @@ public class Main {
 	}
 	
 	public static void adicionarMotoGaragem() {
-		System.out.println("Digite exatamente o nome do usuario:");
+		System.out.println("Digite exatamente o nome do usuario:\n");
 		in.nextLine();
 		String nome = in.nextLine();
 		Usuario user = d.buscar_usuario(nome);
-		if(d.getUsuarios().indexOf(user) != -1) {
-			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:");
+		if (user != null) {
+			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:\n");
 			in.nextLine();
 			String modelo = in.nextLine();
-			Motocicleta moto = d.buscar_modelo(modelo); 
-			if(d.getMotocicletas().indexOf(moto) != -1) {
+			Motocicleta moto = d.buscar_modelo(modelo);
+			if (moto != null) {
 				user.adicionar_moto_garagem(moto);
+				System.out.println("Motocicleta adicionada com sucesso!\n");
 			} else {
-				System.out.print("Motocicleta nao encontrada. Digite corretamente o nome do modelo!");
+				System.out.println("Nenhuma motocicleta foi encontrado com esse modelo!\n");
 			}
 		} else {
-			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+			System.out.println("Nenhum usuario foi encontrado com esse nome!\n");
 		}
 	}
 	
 	public static void removerMotoGaragem() {
-		System.out.println("Digite exatamente o nome do usuario:");
+		System.out.println("Digite exatamente o nome do usuario:\n");
 		in.nextLine();
 		String nome = in.nextLine();
 		Usuario user = d.buscar_usuario(nome);
-		if(d.getUsuarios().indexOf(user) != -1) {
-			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:");
+		if (user != null) {
+			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:\n");
 			in.nextLine();
 			String modelo = in.nextLine();
 			Motocicleta moto = d.buscar_modelo(modelo);
-			int posicao = d.getMotocicletas().indexOf(moto);
-			if( posicao != -1) {
-				user.remover_moto_garagem(posicao);;
+			if (moto != null) {
+				user.remover_moto_garagem(moto);
+				System.out.println("Motocicleta removida com sucesso!\n");
 			} else {
-				System.out.print("Motocicleta nao encontrada. Digite corretamente o nome do modelo!");
+				System.out.println("Nenhuma motocicleta foi encontrado com esse modelo!\n");
 			}
 		} else {
-			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
-		};
+			System.out.println("Nenhum usuario foi encontrado com esse nome!\n");
+		}
 	}
 	
 	// Criação dos métodos utilizados no menu user:
@@ -252,15 +254,15 @@ public class Main {
 	
 	public static void removerUser() {
 		System.out.println(d.listar_usuarios());
-		System.out.println("Digite exatamente o nome do usuario que deseja excluir:");
+		System.out.println("Digite exatamente o nome do usuario que deseja excluir:\n");
 		in.nextLine();
 		String nome = in.nextLine();
-		Usuario user = d.buscar_usuario(nome);
-		if(d.getUsuarios().indexOf(user) != -1) {
-			int posicao = d.getUsuarios().indexOf(user);
-			d.excluir_usuario(posicao);
+		if (d.buscar_usuario(nome) == null) {
+			System.out.println("Motocicleta nao encontrada!\n");
 		} else {
-			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+			int posicao = d.getUsuarios().indexOf(d.buscar_usuario(nome));
+			d.excluir_usuario(posicao);
+			System.out.println("Usuario excluido com sucesso!\n");
 		}
 	}
 	
@@ -274,11 +276,11 @@ public class Main {
 		in.nextLine();
 		String nome = in.nextLine();
 		Usuario user = d.buscar_usuario(nome);
-		if(d.getUsuarios().indexOf(user) != -1) {
+		if (user != null) {
 			user.getGaragem().exibir_garagem();
 		} else {
 			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
-		};
+		}
 	}
 	
 	public static void editarEndGaragem() {
@@ -295,10 +297,10 @@ public class Main {
 		in.nextLine();
 		String nome = in.nextLine();
 		Usuario user = d.buscar_usuario(nome);
-		if(d.getUsuarios().indexOf(user) != -1) {
+		if (user != null) {
 			int posicao = d.getUsuarios().indexOf(user);
 			d.getUsuarios().get(posicao).finalizar_pedido();
-		} else {
+		}else {
 			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
 		}
 	}
@@ -314,12 +316,12 @@ public class Main {
 		System.out.println("Digite exatamente o nome do acessorio que deseja excluir:");
 		in.nextLine();
 		String nome = in.nextLine();
-		Acessorio aces = d.buscar_acessorio(nome);
-		if(d.getAcessorios().indexOf(aces) != -1) {
-			int posicao = d.getUsuarios().indexOf(aces);
-			d.excluir_acessorios(posicao);
+		if (d.buscar_acessorio(nome) == null) {
+			System.out.println("Acessorio nao encontrado!\n");
 		} else {
-			System.out.print("Acessorio nao encontrado. Digite corretamente o nome do acessorio!");
+			int posicao = d.getAcessorios().indexOf(d.buscar_acessorio(nome));
+			d.excluir_acessorios(posicao);
+			System.out.println("Acessorio excluido com sucesso!\n");
 		}
 	}
 	
@@ -330,5 +332,4 @@ public class Main {
 	public static void adicionarAcesMoto() {
 		System.out.println("Teste adicionar moto garagem");
 	}
-	
 }

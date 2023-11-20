@@ -60,11 +60,7 @@ public class Usuario {
 		return "Nome do usuario: " + nome + ", email: " + email + ", \nValor total da garagem: R$ " + garagem.getValor_total();
 	}
 	
-	public boolean editar_usuario(String nome) {
-		return true;
-	}
-	
-	// Adicionar as motos criadas nos usuarios criados ************
+	// Adicionar as motos criadas nos usuarios criados 
 	
 	public void adicionar_moto_garagem(Motocicleta motocicleta) {
 		garagem.getMotocicletas().add(motocicleta);
@@ -74,15 +70,13 @@ public class Usuario {
 		garagem.setnMotocicletas(qtd++);
 	}
 	
-	public void remover_moto_garagem(int i) {
-		if (i < garagem.getnMotocicletas() && i >= 0) {
-			garagem.getMotocicletas().remove(i);
-			int qtd = garagem.getnMotocicletas();
-			garagem.setnMotocicletas(qtd--);
-			System.out.println("Motocicleta excluida com sucesso!");
-		} else {
-			System.out.println("Indice invalido");
-		}
+	public void remover_moto_garagem(Motocicleta motocicleta) {
+		int i = garagem.getMotocicletas().indexOf(motocicleta);
+		garagem.getMotocicletas().remove(i);
+		int qtd = garagem.getnMotocicletas();
+		garagem.setnMotocicletas(qtd--);
+		double valor = garagem.getValor_total();
+		garagem.setValor_total(valor -= motocicleta.getValor());
 	}
 	
 	public void finalizar_pedido() {

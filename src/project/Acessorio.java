@@ -42,8 +42,4 @@ public class Acessorio extends Produto {
 		return "Nome do acessorio: " + nome + ", preco: R$ " + valor + ", cor: " + cor + ", posicao: " + posicao;
 	}
 	
-	public boolean editar_acessorio(String nome) {
-		return true;
-	}
-
 }

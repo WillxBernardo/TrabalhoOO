@@ -49,9 +49,6 @@ public class Motocicleta extends Produto{
 	public String exibir_moto() {
 		return "Modelo: " + modelo + ", preco: R$ " + valor + ", cor: " + cor + ", cilindrada: " + cilindrada + ", acessorios: " + acessorio;
 	}
-	
-	public boolean editar_moto(String modelo) {
-		return true;
-	}
+
 	
 }

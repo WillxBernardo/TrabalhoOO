@@ -73,43 +73,34 @@ public class Dados {
 	// Métodos especificos da classe
 	
 	public void excluir_usuario(int i) {
-		if (i < nUsuarios && i >= 0) {
-			usuarios.remove(i);
-			nUsuarios -= 1;
-			System.out.println("Usuario excluido com sucesso!");
-		} else {
-			System.out.println("Indice invalido");
-		}
+		usuarios.remove(i);
+		nUsuarios -= 1;
 	}
 	
 	public void excluir_moto(int i) {
-		if (i < nMotocicletas && i >= 0) {
-			motocicletas.remove(i);
-			nMotocicletas -= 1;
-			System.out.println("Motocicleta excluida com sucesso!");
-		} else {
-			System.out.println("Indice invalido");
-		}
+		motocicletas.remove(i);
+		nMotocicletas -= 1;
 	}
 	
 	public void excluir_acessorios(int i) {
-		if (i < nAcessorios && i >= 0) {
-			acessorios.remove(i);
-			nAcessorios -= 1;
-			System.out.println("Acessorio excluido com sucesso!");
-		} else {
-			System.out.println("Indice invalido");
-		}
+		acessorios.remove(i);
+		nAcessorios -= 1;
 	}
 	
 	public void adicionar_acessorio_moto(Acessorio aces, Motocicleta moto) {
 		int pos = motocicletas.indexOf(moto);
 		motocicletas.get(pos).setAcessorio(aces);
+		double valor_aces = aces.getValor();
+		double valor_moto = moto.getValor();
+ 		moto.setValor(valor_moto += valor_aces);
 	}
 	
 	public void remover_acessorio_moto(Acessorio aces, Motocicleta moto) {
 		int pos = motocicletas.indexOf(moto);
 		motocicletas.get(pos).setAcessorio(null);
+		double valor_aces = aces.getValor();
+		double valor_moto = moto.getValor();
+ 		moto.setValor(valor_moto -= valor_aces);
 	}
 	
 	
@@ -140,7 +131,7 @@ public class Dados {
 		String saida = "***** Lista de Acessorios Cadastrados ***** \n" ;
 		if (acessorios != null) {
             for (Acessorio aces : acessorios) {
-                saida += "\nMotocicleta: " + aces.getNome() + ", preco: R$ " + aces.getValor();
+                saida += "\nAcessorio: " + aces.getNome() + ", preco: R$ " + aces.getValor();
             }
         }
 		return saida;
@@ -149,78 +140,58 @@ public class Dados {
 	// Buscas
 	
 	public Motocicleta buscar_modelo(String modelo) {
-		int indice = 0;
 		for(Motocicleta moto: motocicletas) {
 			if (modelo.equals(moto.getModelo())) {
-				indice = motocicletas.indexOf(moto);
+				return moto;
 			}
 		}
-		return motocicletas.get(indice);
-	};
+		return null;
+	}
 	
 	public Usuario buscar_usuario(String nome) {
-		int indice = 0;
 		for(Usuario user: usuarios) {
 			if (nome.equals(user.getNome())) {
-				indice = usuarios.indexOf(user);
+				return user;
 			}
 		}
-		return usuarios.get(indice);
-	};
+		return null;
+	}
 	
 	public Acessorio buscar_acessorio(String nome){
-		int indice = 0;
 		for(Acessorio aces: acessorios) {
 			if (nome.equals(aces.getNome())) {
-				indice = acessorios.indexOf(aces);
+				return aces;
 			}
 		}
-		return acessorios.get(indice);
+		return null;
 	};
 	
 	// Preenchimentos de dados
 	
 	
 	public void preencherDados() {
-	    String[] modelos = {"Adventure", "Roadsters", "Classic", "Rocket", "Triumph Street Triple"};
 
-	    for (int i = 0; i < modelos.length; i++) {
-	        String nomeModelo = modelos[i];
-	        String s = String.valueOf(i);
-	        
-	        // Motocicletas e Acessorios
-	        Motocicleta moto1 = new Motocicleta("cor" + i, 1000.0, nomeModelo, "cilindrada" + i);
-	        Motocicleta moto2 = new Motocicleta("cor" + (i + 5), 1000.0, nomeModelo, "cilindrada" + (i + 5));
-	        
-	        Acessorio aces1 = new Acessorio("cor".concat(s), 0.0, "nome".concat(s), "posicao".concat(s));
-			nAcessorios ++;
-			acessorios.add(aces1);
-			
-	        motocicletas.add(moto1);
-	        motocicletas.add(moto2);
-	        
-	        adicionar_acessorio_moto(aces1, moto1);
-			adicionar_acessorio_moto(aces1, moto2);
-	        nMotocicletas += 2;
-	        
-	    }
-	        
 		for(int i = 0; i < 10; i++) {
 			String s = String.valueOf(i);
-						
-			// Criação do usuario com a garagem
+			
+			// Usuario e garagem
+			
 			Usuario user = new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s));
 			usuarios.add(user);
-			nUsuarios ++;
 			Garagem gar = new Garagem(user, "endereco".concat(s));
 			user.setGaragem(gar);
-			//--------------leticiao p resolver em sala:
-			//adicionar_moto_garagem(moto[s])<-nome de cada modelo; perguntar pro will como usar metodos de fora da  classe;
-			//dúvida: estamos identificando as motos pelos modelos? se sim, tem duas de cada modelo, mas eles 
-			//são identificaveis pelos acessórios que são diferentes.
-			//to ficano maluca. Como vamos selecionar a garagem e o usuário (talvez pedindo o user e a garagem no argumento)? 
-			//hmmm... tem q ver isso daí. pra mim, mesmo na versão antiga as coisas q criamos não tinham conexão umas com as 
-			//outras nessa parte do codigo.
+			
+			//Motociclea e acessorio
+			
+			Motocicleta moto = new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s));
+	        Acessorio aces = new Acessorio("cor".concat(s), 10.0, "nome".concat(s), "posicao".concat(s));
+	        nAcessorios ++;
+			nMotocicletas++;
+			nUsuarios ++;
+			acessorios.add(aces);
+	        motocicletas.add(moto);
+	        adicionar_acessorio_moto(aces, moto);
+	        
 		}	
 	}
 }

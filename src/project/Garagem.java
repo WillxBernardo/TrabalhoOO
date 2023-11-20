@@ -78,10 +78,6 @@ public class Garagem {
 		return saida;
 	}
 	
-	public boolean editar_garagem(Motocicleta motocicleta) {
-		return true;
-	}
-	
 	public String finalizar_pedido(Garagem garagem) {
 		return "Pedido finalizado com sucesso!";
 	}
