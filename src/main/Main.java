@@ -11,9 +11,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		int op = -1;
-		int aux;
 		d.preencherDados();
-
+		
 		// Execução do menu
 
 		while(op != 0) {
@@ -258,15 +257,20 @@ public class Main {
 			in.nextLine();
 			System.out.println("Digite o modelo da motocicleta:");
 			modelo = in.nextLine();
-			System.out.println("Digite a cilindrada da motocicleta:");
-			cilindrada = in.nextLine();
-			System.out.println("Digite o preco da motocicleta: R$ ");
-			valor = in.nextDouble();
-			System.out.println("Digite a cor da motocicleta:");
-			cor = in.nextLine();
-			
-			Motocicleta moto = new Motocicleta(cor, valor, modelo, cilindrada);
-			return moto;	
+			if (d.buscar_modelo(modelo) == null) {
+				System.out.println("Digite a cilindrada da motocicleta:");
+				cilindrada = in.nextLine();
+				System.out.println("Digite o preco da motocicleta: R$ ");
+				valor = in.nextDouble();
+				System.out.println("Digite a cor da motocicleta:");
+				cor = in.nextLine();
+				Motocicleta moto = new Motocicleta(cor, valor, modelo, cilindrada);
+				return moto;	
+			} else {
+				System.out.println("Ja existe uma motocicleta desse modelo!\n");
+				return null;
+			}
+
 		}
 		
 	// Criação dos métodos utilizados no menu user:
@@ -326,7 +330,7 @@ public class Main {
 			int posicao = d.getUsuarios().indexOf(user);
 			d.getUsuarios().get(posicao).finalizar_pedido();
 		}else {
-			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
+			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!\n");
 		}
 	}
 	
@@ -340,16 +344,22 @@ public class Main {
 		in.nextLine();
 		System.out.println("Digite o nome do usuario: ");
 		nome = in.nextLine();
-		System.out.println("Digite o email do usuario:");
-		email = in.nextLine();
-		System.out.println("Digite a senha do usuario:");
-		senha = in.nextLine();
-		System.out.println("Digite o endereco do usuario:");
-		endereco = in.nextLine();
-		Usuario user = new Usuario(nome, email, senha);
-		Garagem gar = new Garagem(user, endereco);
-		user.setGaragem(gar);
-		return user;	
+		if (d.buscar_usuario(nome) == null) {
+			System.out.println("Digite o email do usuario:");
+			email = in.nextLine();
+			System.out.println("Digite a senha do usuario:");
+			senha = in.nextLine();
+			System.out.println("Digite o endereco do usuario:");
+			endereco = in.nextLine();
+			Usuario user = new Usuario(nome, email, senha);
+			Garagem gar = new Garagem(user, endereco);
+			user.setGaragem(gar);
+			return user;
+		} else {
+			System.out.println("Ja existe um usuario com esse nome!\n");
+			return null;
+		}
+			
 	}
 	
 	// Criação dos métodos utilizados no menu acessorio:
@@ -392,13 +402,19 @@ public class Main {
 		in.nextLine();
 		System.out.println("Digite o nome do acessorio:");
 		nome = in.nextLine();
-		System.out.println("Digite a posicao do acessorio:");
-		posicao = in.nextLine();
-		System.out.println("Digite o preco do acessorio: R$ ");
-		valor = in.nextDouble();
-		System.out.println("Digite a cor do acessorio:");
-		cor = in.nextLine();
-		Acessorio aces = new Acessorio(cor, valor, nome, posicao);
-		return aces;
+		if (d.buscar_acessorio(nome) == null) {
+			System.out.println("Digite a posicao do acessorio:");
+			posicao = in.nextLine();
+			System.out.println("Digite o preco do acessorio: R$ ");
+			valor = in.nextDouble();
+			System.out.println("Digite a cor do acessorio:");
+			cor = in.nextLine();
+			Acessorio aces = new Acessorio(cor, valor, nome, posicao);
+			return aces;
+		} else {
+			System.out.println("Ja existe um acessorio com esse nome!\n");
+			return null;
+		}
+		
 	}
 }
