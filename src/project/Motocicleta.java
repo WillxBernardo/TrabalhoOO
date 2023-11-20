@@ -34,12 +34,12 @@ public class Motocicleta extends Produto{
 		this.cilindrada = cilindrada;
 	}
 	
-	public Acessorio getAcessorios() {
+	public Acessorio getAcessorio() {
 		return acessorio;
 	}
 	
-	public void setAcessorio(Acessorio acessorios) {
-		this.acessorio = acessorios;
+	public void setAcessorio(Acessorio acessorio) {
+		this.acessorio = acessorio;
 	}
 	
 	

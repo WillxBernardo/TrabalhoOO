@@ -158,6 +158,8 @@ public class Dados {
 			acessorios.add(aces);
 	        motocicletas.add(moto);
 	        adicionar_acessorio_moto(aces, moto);
+	        user.adicionar_moto_garagem(moto);
+	        
 	        
 		}	
 	}

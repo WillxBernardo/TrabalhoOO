@@ -68,8 +68,8 @@ public class Garagem {
 	// Métodos especificos da classe
 	
 	public String exibir_garagem() {
-		String saida = "Garagem do usuário: " + usuario.getNome() +
-					"\nValor total: R$ " + valor_total + "\nEndereço: " + endereco + "\nLista de motos:";
+		String saida = "Garagem do usuario: " + usuario.getNome() +
+					"\nValor total: R$ " + valor_total + "\nEndereco: " + endereco + "\nLista de motos:";
         if (motocicletas != null) {
             for (Motocicleta moto : motocicletas) {
                 saida += "\nMotocicleta: " + moto.getModelo();

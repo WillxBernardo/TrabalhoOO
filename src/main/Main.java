@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		int op = -1;
 		d.preencherDados();
-		
+	
 		// Execução do menu
 
 		while(op != 0) {
@@ -45,6 +45,10 @@ public class Main {
 						 	case 5:
 						 		adicionarMotoGaragem();
 						 		break;
+						 	case 6:
+						 		removerMotoGaragem();
+						 		break;
+						 		
 						 		
 						 }
 					}
@@ -73,15 +77,6 @@ public class Main {
 						 		exibirGaragem();
 						 		break;
 						 	case 6:
-						 		editarEndGaragem();
-						 		break;
-						 	case 7:
-						 		removerMotoGaragem();
-						 		break;
-						 	case 8:
-						 		removerAcesMoto();
-						 		break;
-						 	case 9:
 						 		finalizarPedido();
 						 		break;
 						 }
@@ -109,6 +104,9 @@ public class Main {
 						 		break;
 						 	case 5:
 						 		adicionarAcesMoto();
+						 		break;
+						 	case 6:
+						 		removerAcesMoto();
 						 		break;
 						 		
 						 	}
@@ -143,6 +141,7 @@ public class Main {
 		saida = saida + "03 - Editar motocicleta existente\n"; // falta ser feito
 		saida = saida + "04 - Listar motocicletas cadastradas\n";
 		saida = saida + "05 - Adicionar moto na garagem\n";
+		saida = saida + "06 - Remover moto da garagem\n"; // **
 		
 		
 		return saida;
@@ -156,10 +155,7 @@ public class Main {
 		saida = saida + "03 - Editar usuario existente\n"; // falta ser feito
 		saida = saida + "04 - Listar usuarios cadastrados\n";
 		saida = saida + "05 - Exibir garagem do usuario\n";
-		saida = saida + "06 - Editar endereco da garagem\n"; // falta ser feito ****
-		saida = saida + "07 - Remover moto da garagem\n"; 
-		saida = saida + "08 - Remover acessorio da moto\n"; // falta ser feito
-		saida = saida + "09 - Finalizar pedido\n";
+		saida = saida + "06 - Finalizar pedido\n";
 		return saida;
 	}
 	
@@ -172,6 +168,7 @@ public class Main {
 		saida = saida + "03 - Editar acessorio existente\n"; // falta ser feito
 		saida = saida + "04 - Listar acessorios cadastrados\n";
 		saida = saida + "05 - Adicionar acessorio na moto\n"; // falta ser feito
+		saida = saida + "06 - Remover acessorio da moto\n"; // falta ser feito **
 		
 		return saida;
 		
@@ -301,23 +298,14 @@ public class Main {
 	
 	public static void exibirGaragem() {
 		System.out.println(d.listar_usuarios());
-		System.out.println("Digite exatamente o nome do usuario que deseja excluir:");
+		System.out.println("Digite exatamente o nome do usuario:");
 		in.nextLine();
 		String nome = in.nextLine();
-		Usuario user = d.buscar_usuario(nome);
-		if (user != null) {
-			user.getGaragem().exibir_garagem();
+		if (d.buscar_usuario(nome) != null) {
+			System.out.println(d.buscar_usuario(nome).getGaragem().exibir_garagem());
 		} else {
 			System.out.print("Usuario nao encontrado. Digite corretamente o nome do usuario!");
 		}
-	}
-	
-	public static void editarEndGaragem() {
-		System.out.println("Teste editar garagem");
-	}
-	
-	public static void removerAcesMoto() {
-		System.out.println("Teste adicionar moto garagem");
 	}
 	
 	public static void finalizarPedido() {
@@ -389,6 +377,10 @@ public class Main {
 	}
 	
 	public static void adicionarAcesMoto() {
+		System.out.println("Teste adicionar moto garagem");
+	}
+	
+	public static void removerAcesMoto() {
 		System.out.println("Teste adicionar moto garagem");
 	}
 	
