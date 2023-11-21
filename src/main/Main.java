@@ -190,9 +190,27 @@ public class Main {
 	// Criação dos métodos utilizados no menu moto:
 	
 	public static void cadastrarMoto() {
-		Motocicleta moto = lerDadosMoto();
-		d.getMotocicletas().add(moto);
-		System.out.println("Motocicleta cadastrada com sucesso!");
+		String modelo;
+		String cilindrada; 
+		double valor;
+		String cor;
+		in.nextLine();
+		System.out.println("Digite o modelo da motocicleta:");
+		modelo = in.nextLine();
+		if (d.buscar_modelo(modelo) == null) {
+			System.out.println("Digite a cilindrada da motocicleta:");
+			cilindrada = in.nextLine();
+			System.out.println("Digite o preco da motocicleta: R$ ");
+			valor = in.nextDouble();
+			in.nextLine();
+			System.out.println("Digite a cor da motocicleta:");
+			cor = in.nextLine();
+			Motocicleta moto = new Motocicleta(cor, valor, modelo, cilindrada);
+			d.getMotocicletas().add(moto);
+			System.out.println("Motocicleta cadastrada com sucesso!");
+		} else {
+			System.out.println("Ja existe uma motocicleta desse modelo!\n");
+		}	
 	}
 	
 	public static void removerMoto() {
@@ -207,10 +225,14 @@ public class Main {
 			d.excluir_moto(posicao);
 			System.out.println("Motocicleta excluida com sucesso!\n");
 		}
-		
 	}
 	
 	public static void editarMoto() {
+		String modelonovo;
+		String cilindrada; 
+		double valor;
+		String cor;
+
 		System.out.println(d.listar_motos());
 		System.out.println("Digite exatamente o nome do modelo que deseja editar:\n");
 		in.nextLine();
@@ -219,9 +241,22 @@ public class Main {
 			System.out.println("Motocicleta nao encontrada!\n");
 		} else {
 			int posicao = d.getMotocicletas().indexOf(d.buscar_modelo(modelo));
-			Motocicleta moto = lerDadosMoto();
-			d.getMotocicletas().set(posicao, moto);
-			System.out.println("Motocicleta editada com sucesso!\n");
+			System.out.println("Digite o modelo da motocicleta:");
+			modelonovo = in.nextLine();
+			if (d.buscar_modelo(modelonovo) == null || modelonovo.equals(modelo)) {
+				System.out.println("Digite a cilindrada da motocicleta:");
+				cilindrada = in.nextLine();
+				System.out.println("Digite o preco da motocicleta: R$ ");
+				valor = in.nextDouble();
+				in.nextLine();
+				System.out.println("Digite a cor da motocicleta:");
+				cor = in.nextLine();
+				Motocicleta moto = new Motocicleta(cor, valor, modelonovo, cilindrada);
+				d.getMotocicletas().set(posicao, moto);
+				System.out.println("Motocicleta editada com sucesso!\n");
+			} else {
+				System.out.println("Modelo cadastrado em outra motocicleta!\n");
+			}
 		}
 	}
 	
@@ -264,7 +299,7 @@ public class Main {
 		String nome = in.nextLine();
 		Usuario user = d.buscar_usuario(nome);
 		if (user != null) {
-			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:\n");
+			System.out.println("Digite exatamente o modelo da motocicleta que deseja remover:\n");
 			in.nextLine();
 			String modelo = in.nextLine();
 			Motocicleta moto = d.buscar_modelo(modelo);
@@ -279,38 +314,32 @@ public class Main {
 		}
 	}
 	
-	// Metodo para leitura de dados de uma moto
 	
-		public static Motocicleta lerDadosMoto() {
-			String modelo;
-			String cilindrada; 
-			double valor;
-			String cor;
-			in.nextLine();
-			System.out.println("Digite o modelo da motocicleta:");
-			modelo = in.nextLine();
-			if (d.buscar_modelo(modelo) == null) {
-				System.out.println("Digite a cilindrada da motocicleta:");
-				cilindrada = in.nextLine();
-				System.out.println("Digite o preco da motocicleta: R$ ");
-				valor = in.nextDouble();
-				System.out.println("Digite a cor da motocicleta:");
-				cor = in.nextLine();
-				Motocicleta moto = new Motocicleta(cor, valor, modelo, cilindrada);
-				return moto;	
-			} else {
-				System.out.println("Ja existe uma motocicleta desse modelo!\n");
-				return null;
-			}
-
-		}
-		
 	// Criação dos métodos utilizados no menu user:
 	
 	public static void cadastrarUser() {
-		Usuario user = lerDadosUsuario();
-		d.getUsuarios().add(user);
-		System.out.println("Usuario cadastrado com sucesso!");
+		String nome;
+		String email; 
+		String senha; 
+		String endereco;
+		in.nextLine();
+		System.out.println("Digite o nome do usuario: ");
+		nome = in.nextLine();
+		if (d.buscar_usuario(nome) == null) {
+			System.out.println("Digite o email do usuario:");
+			email = in.nextLine();
+			System.out.println("Digite a senha do usuario:");
+			senha = in.nextLine();
+			System.out.println("Digite o endereco do usuario:");
+			endereco = in.nextLine();
+			Usuario user = new Usuario(nome, email, senha);
+			Garagem gar = new Garagem(user, endereco);
+			user.setGaragem(gar);
+			d.getUsuarios().add(user);
+			System.out.println("Usuario cadastrado com sucesso!");
+		} else {
+			System.out.println("Ja existe um usuario com esse nome!\n");
+		}
 	}
 	
 	public static void removerUser() {
@@ -328,6 +357,11 @@ public class Main {
 	}
 	
 	public static void editarUser() {
+		String nomenovo;
+		String email; 
+		String senha; 
+		String endereco;
+		
 		System.out.println(d.listar_usuarios());
 		System.out.println("Digite exatamente o nome do usuario que deseja editar:\n");
 		in.nextLine();
@@ -335,10 +369,25 @@ public class Main {
 		if (d.buscar_usuario(nome) == null) {
 			System.out.println("Usuario nao encontrado!\n");
 		} else {
+			Garagem gar = d.buscar_usuario(nome).getGaragem();
 			int posicao = d.getUsuarios().indexOf(d.buscar_usuario(nome));
-			Usuario user = lerDadosUsuario();
-			d.getUsuarios().set(posicao, user);
-			System.out.println("Usuario editado com sucesso!\n");
+			System.out.println("Digite o nome do usuario: ");
+			nomenovo = in.nextLine();
+			if (d.buscar_usuario(nomenovo) == null || nomenovo.equals(nome)) {
+				System.out.println("Digite o email do usuario:");
+				email = in.nextLine();
+				System.out.println("Digite a senha do usuario:");
+				senha = in.nextLine();
+				System.out.println("Digite o endereco do usuario:");
+				endereco = in.nextLine();
+				Usuario user = new Usuario(nomenovo, email, senha);
+				gar.setEndereco(endereco);
+				user.setGaragem(gar);
+				d.getUsuarios().set(posicao, user);
+				System.out.println("Usuario editado com sucesso!\n");
+			} else {
+				System.out.println("Nome cadastrado em outro usuario\n");
+			}
 		}
 	}
 	
@@ -380,40 +429,31 @@ public class Main {
 		}
 	}
 	
-	// Metodo para leitura de dados de um usuario
-	
-	public static Usuario lerDadosUsuario() {
-		String nome;
-		String email; 
-		String senha; 
-		String endereco;
-		in.nextLine();
-		System.out.println("Digite o nome do usuario: ");
-		nome = in.nextLine();
-		if (d.buscar_usuario(nome) == null) {
-			System.out.println("Digite o email do usuario:");
-			email = in.nextLine();
-			System.out.println("Digite a senha do usuario:");
-			senha = in.nextLine();
-			System.out.println("Digite o endereco do usuario:");
-			endereco = in.nextLine();
-			Usuario user = new Usuario(nome, email, senha);
-			Garagem gar = new Garagem(user, endereco);
-			user.setGaragem(gar);
-			return user;
-		} else {
-			System.out.println("Ja existe um usuario com esse nome!\n");
-			return null;
-		}
-			
-	}
 	
 	// Criação dos métodos utilizados no menu acessorio:
 	
 	public static void cadastrarAces() {
-		Acessorio aces = lerDadosAcessorio();
-		d.getAcessorios().add(aces);
-		System.out.println("Acessorio cadastrado com sucesso!");
+		String nome;
+		String posicao; 
+		double valor; 
+		String cor;
+		in.nextLine();
+		System.out.println("Digite o nome do acessorio:");
+		nome = in.nextLine();
+		if (d.buscar_acessorio(nome) == null) {
+			System.out.println("Digite a posicao do acessorio:");
+			posicao = in.nextLine();
+			System.out.println("Digite o preco do acessorio: R$ ");
+			valor = in.nextDouble();
+			in.nextLine();
+			System.out.println("Digite a cor do acessorio:");
+			cor = in.nextLine();
+			Acessorio aces = new Acessorio(cor, valor, nome, posicao);
+			d.getAcessorios().add(aces);
+			System.out.println("Acessorio cadastrado com sucesso!");
+		} else {
+			System.out.println("Ja existe um acessorio com esse nome!\n");
+		}
 	}
 	
 	public static void removerAces() {
@@ -431,6 +471,11 @@ public class Main {
 	}
 	
 	public static void editarAces() {
+		String nomenovo;
+		String posicao; 
+		double valor; 
+		String cor;
+		
 		System.out.println(d.listar_acessorios());
 		System.out.println("Digite exatamente o nome do acessorio que deseja editar:");
 		in.nextLine();
@@ -438,10 +483,23 @@ public class Main {
 		if (d.buscar_acessorio(nome) == null) {
 			System.out.println("Acessorio nao encontrado!\n");
 		} else {
-			int posicao = d.getAcessorios().indexOf(d.buscar_acessorio(nome));
-			Acessorio aces = lerDadosAcessorio();
-			d.getAcessorios().set(posicao, aces);
-			System.out.println("Acessorio editado com sucesso!\n");
+			int pos = d.getAcessorios().indexOf(d.buscar_acessorio(nome));
+			System.out.println("Digite o nome do acessorio:");
+			nomenovo = in.nextLine();
+			if (d.buscar_acessorio(nomenovo) == null || nomenovo.equals(nome)) {
+				System.out.println("Digite a posicao do acessorio:");
+				posicao = in.nextLine();
+				System.out.println("Digite o preco do acessorio: R$ ");
+				valor = in.nextDouble();
+				in.nextLine();
+				System.out.println("Digite a cor do acessorio:");
+				cor = in.nextLine();
+				Acessorio aces = new Acessorio(cor, valor, nomenovo, posicao);
+				d.getAcessorios().set(pos, aces);
+				System.out.println("Acessorio editado com sucesso!\n");
+			} else {
+				System.out.println("Ja existe um acessorio com esse nome!\n");
+			}
 		}
 	}
 	
@@ -467,7 +525,6 @@ public class Main {
 		} else {
 			System.out.println(d.listar_motos());
 			System.out.println("Digite exatamente o nome do modelo da motocicleta:");
-			in.nextLine();
 			String modelo = in.nextLine();
 			if (d.buscar_modelo(modelo)== null) {
 				System.out.println("Motocicleta nao encontrada!\n");
@@ -498,30 +555,5 @@ public class Main {
 			}
 		}
 	}
-	
-	// Metodo para leitura de dados de um acessorio
-	
-	public static Acessorio lerDadosAcessorio() {
-		String nome;
-		String posicao; 
-		double valor; 
-		String cor;
-		in.nextLine();
-		System.out.println("Digite o nome do acessorio:");
-		nome = in.nextLine();
-		if (d.buscar_acessorio(nome) == null) {
-			System.out.println("Digite a posicao do acessorio:");
-			posicao = in.nextLine();
-			System.out.println("Digite o preco do acessorio: R$ ");
-			valor = in.nextDouble();
-			System.out.println("Digite a cor do acessorio:");
-			cor = in.nextLine();
-			Acessorio aces = new Acessorio(cor, valor, nome, posicao);
-			return aces;
-		} else {
-			System.out.println("Ja existe um acessorio com esse nome!\n");
-			return null;
-		}
-		
-	}
+
 }

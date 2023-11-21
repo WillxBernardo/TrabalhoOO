@@ -57,7 +57,8 @@ public class Usuario {
 	// Métodos específicos da classe
 	
 	public String exibir_usuario() {
-		return "Nome do usuario: " + nome + ", email: " + email + ", \nValor total da garagem: R$ " + garagem.getValor_total();
+		return "Nome do usuario: " + nome + ", email: " + email +
+				", Endereco: " + garagem.getEndereco() + ", \nValor total da garagem: R$ " + garagem.getValor_total();
 	}
 	
 	// Adicionar as motos criadas nos usuarios criados 
