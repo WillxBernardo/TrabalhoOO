@@ -61,8 +61,6 @@ public class Usuario {
 				", Endereco: " + garagem.getEndereco() + ", \nValor total da garagem: R$ " + garagem.getValor_total();
 	}
 	
-	// Adicionar as motos criadas nos usuarios criados 
-	
 	public void adicionar_moto_garagem(Motocicleta motocicleta) {
 		garagem.getMotocicletas().add(motocicleta);
 		double valor = garagem.getValor_total();

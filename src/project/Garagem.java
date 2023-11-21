@@ -66,8 +66,4 @@ public class Garagem {
         }
 		return saida;
 	}
-	
-	public String finalizar_pedido(Garagem garagem) {
-		return "Pedido finalizado com sucesso!";
-	}
 }
