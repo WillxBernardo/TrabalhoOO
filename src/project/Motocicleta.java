@@ -47,7 +47,8 @@ public class Motocicleta extends Produto{
 	
 	// to String
 	public String exibir_moto() {
-		return "Modelo: " + modelo + ", preco: R$ " + valor + ", cor: " + cor + ", cilindrada: " + cilindrada + ", acessorios: " + acessorio.getNome();
+		  String infoAces = acessorio != null ? ", acessorio: " + acessorio.getNome() : ", sem acessorio";
+		return "Modelo: " + modelo + ", preco: R$ " + valor + ", cor: " + cor + ", cilindrada: " + cilindrada + infoAces;
 	}
 
 	
