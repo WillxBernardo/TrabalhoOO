@@ -545,7 +545,6 @@ public class Main {
 		} else {
 			System.out.println(d.listar_motos());
 			System.out.println("Digite exatamente o nome do modelo da motocicleta:");
-			in.nextLine();
 			String modelo = in.nextLine();
 			if (d.buscar_modelo(modelo)== null) {
 				System.out.println("Motocicleta nao encontrada!\n");
