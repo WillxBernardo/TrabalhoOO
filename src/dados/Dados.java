@@ -146,7 +146,7 @@ public class Dados {
 			
 			// Usuario e garagem
 			
-			Usuario user = new Usuario("nome".concat(s), "email".concat(s), "senha".concat(s));
+			Usuario user = new Usuario("usuario".concat(s), "email".concat(s), "senha".concat(s));
 			usuarios.add(user);
 			Garagem gar = new Garagem(user, "endereco".concat(s));
 			user.setGaragem(gar);
@@ -154,7 +154,7 @@ public class Dados {
 			//Motociclea e acessorio
 			
 			Motocicleta moto = new Motocicleta("cor".concat(s), 1000.0, "modelo".concat(s), "cilindrada".concat(s));
-	        Acessorio aces = new Acessorio("cor".concat(s), 10.0, "nome".concat(s), "posicao".concat(s));
+	        Acessorio aces = new Acessorio("cor".concat(s), 10.0, "acessorio".concat(s), "posicao".concat(s));
 			acessorios.add(aces);
 	        motocicletas.add(moto);
 	        adicionar_acessorio_moto(aces, moto);
