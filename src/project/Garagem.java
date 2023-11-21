@@ -6,7 +6,6 @@ public class Garagem {
 	private double valor_total;
 	private Usuario usuario;
 	private ArrayList<Motocicleta> motocicletas;
-	private int nMotocicletas;
 	private String endereco;
 	
 	// construtor
@@ -16,7 +15,6 @@ public class Garagem {
 		this.usuario = usuario;
 		this.endereco = endereco;
 		this.motocicletas = new ArrayList<>();
-		this.nMotocicletas = 0;
 	}
 	
 	
@@ -52,15 +50,6 @@ public class Garagem {
 	
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
-	}
-	
-	public int getnMotocicletas() {
-		return nMotocicletas;
-	}
-
-
-	public void setnMotocicletas(int nMotocicletas) {
-		this.nMotocicletas = nMotocicletas;
 	}
 	
 	

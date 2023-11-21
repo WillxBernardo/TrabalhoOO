@@ -67,15 +67,11 @@ public class Usuario {
 		garagem.getMotocicletas().add(motocicleta);
 		double valor = garagem.getValor_total();
 		garagem.setValor_total(valor += motocicleta.getValor());
-		int qtd = garagem.getnMotocicletas();
-		garagem.setnMotocicletas(qtd++);
 	}
 	
 	public void remover_moto_garagem(Motocicleta motocicleta) {
 		int i = garagem.getMotocicletas().indexOf(motocicleta);
 		garagem.getMotocicletas().remove(i);
-		int qtd = garagem.getnMotocicletas();
-		garagem.setnMotocicletas(qtd--);
 		double valor = garagem.getValor_total();
 		garagem.setValor_total(valor -= motocicleta.getValor());
 	}
@@ -84,7 +80,7 @@ public class Usuario {
 		String saida = "Pedido efetuado com sucesso!\nRevise seu pedido:\n";
 		saida = saida + garagem.exibir_garagem();
 		garagem.setMotocicletas(new ArrayList<>());
-		garagem.setnMotocicletas(0);
+		garagem.setValor_total(0);
 		System.out.println(saida);
 	}
 }
