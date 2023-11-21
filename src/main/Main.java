@@ -43,9 +43,12 @@ public class Main {
 						 		System.out.println(d.listar_motos());
 						 		break;
 						 	case 5:
-						 		adicionarMotoGaragem();
+						 		exibirMoto();
 						 		break;
 						 	case 6:
+						 		adicionarMotoGaragem();
+						 		break;
+						 	case 7:
 						 		removerMotoGaragem();
 						 		break;
 						 		
@@ -74,9 +77,12 @@ public class Main {
 						 		System.out.println(d.listar_usuarios());
 						 		break;
 						 	case 5:
-						 		exibirGaragem();
+						 		exibirUsuario();
 						 		break;
 						 	case 6:
+						 		exibirGaragem();
+						 		break;
+						 	case 7:
 						 		finalizarPedido();
 						 		break;
 						 }
@@ -103,9 +109,12 @@ public class Main {
 						 		System.out.println(d.listar_acessorios());
 						 		break;
 						 	case 5:
-						 		adicionarAcesMoto();
+						 		exibirAces();
 						 		break;
 						 	case 6:
+						 		adicionarAcesMoto();
+						 		break;
+						 	case 7:
 						 		removerAcesMoto();
 						 		break;
 						 		
@@ -138,10 +147,11 @@ public class Main {
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar nova motocicleta\n";
 		saida = saida + "02 - Excluir motocicleta existente\n";
-		saida = saida + "03 - Editar motocicleta existente\n"; // falta ser feito
+		saida = saida + "03 - Editar motocicleta existente\n";
 		saida = saida + "04 - Listar motocicletas cadastradas\n";
-		saida = saida + "05 - Adicionar moto na garagem\n";
-		saida = saida + "06 - Remover moto da garagem\n"; // **
+		saida = saida + "05 - Exibir motocicleta\n";
+		saida = saida + "06 - Adicionar moto na garagem\n";
+		saida = saida + "07 - Remover moto da garagem\n";
 		
 		
 		return saida;
@@ -152,10 +162,11 @@ public class Main {
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar novo usuario\n";
 		saida = saida + "02 - Excluir usuario existente\n";
-		saida = saida + "03 - Editar usuario existente\n"; // falta ser feito
+		saida = saida + "03 - Editar usuario existente\n";
 		saida = saida + "04 - Listar usuarios cadastrados\n";
-		saida = saida + "05 - Exibir garagem do usuario\n";
-		saida = saida + "06 - Finalizar pedido\n";
+		saida = saida + "05 - Exibir usuario\n";
+		saida = saida + "06 - Exibir garagem do usuario\n";
+		saida = saida + "07 - Finalizar pedido\n";
 		return saida;
 	}
 	
@@ -165,10 +176,11 @@ public class Main {
 		saida = saida + "00 - Voltar ao menu anterior\n";
 		saida = saida + "01 - Cadastrar novo acessorio\n";
 		saida = saida + "02 - Excluir acessorio existente\n";
-		saida = saida + "03 - Editar acessorio existente\n"; // falta ser feito
+		saida = saida + "03 - Editar acessorio existente\n";
 		saida = saida + "04 - Listar acessorios cadastrados\n";
-		saida = saida + "05 - Adicionar acessorio na moto\n"; // falta ser feito
-		saida = saida + "06 - Remover acessorio da moto\n"; // falta ser feito **
+		saida = saida + "05 - Exibir acessorio\n";
+		saida = saida + "06 - Adicionar acessorio na moto\n";
+		saida = saida + "07 - Remover acessorio da moto\n";
 		
 		return saida;
 		
@@ -199,7 +211,30 @@ public class Main {
 	}
 	
 	public static void editarMoto() {
-		System.out.println("Teste editar moto");
+		System.out.println(d.listar_motos());
+		System.out.println("Digite exatamente o nome do modelo que deseja editar:\n");
+		in.nextLine();
+		String modelo = in.nextLine();
+		if (d.buscar_modelo(modelo) == null) {
+			System.out.println("Motocicleta nao encontrada!\n");
+		} else {
+			int posicao = d.getMotocicletas().indexOf(d.buscar_modelo(modelo));
+			Motocicleta moto = lerDadosMoto();
+			d.getMotocicletas().set(posicao, moto);
+			System.out.println("Motocicleta editada com sucesso!\n");
+		}
+	}
+	
+	public static void exibirMoto() {
+		System.out.println(d.listar_motos());
+		System.out.println("Digite exatamente o nome do modelo que deseja exibir:\n");
+		in.nextLine();
+		String modelo = in.nextLine();
+		if (d.buscar_modelo(modelo) == null) {
+			System.out.println("Motocicleta nao encontrada!\n");
+		} else {
+			System.out.println(d.buscar_modelo(modelo).exibir_moto());
+		}
 	}
 	
 	public static void adicionarMotoGaragem() {
@@ -284,7 +319,7 @@ public class Main {
 		in.nextLine();
 		String nome = in.nextLine();
 		if (d.buscar_usuario(nome) == null) {
-			System.out.println("Motocicleta nao encontrada!\n");
+			System.out.println("Usuario nao encontrado!\n");
 		} else {
 			int posicao = d.getUsuarios().indexOf(d.buscar_usuario(nome));
 			d.excluir_usuario(posicao);
@@ -293,7 +328,30 @@ public class Main {
 	}
 	
 	public static void editarUser() {
-		System.out.println("Teste editar user");
+		System.out.println(d.listar_usuarios());
+		System.out.println("Digite exatamente o nome do usuario que deseja editar:\n");
+		in.nextLine();
+		String nome = in.nextLine();
+		if (d.buscar_usuario(nome) == null) {
+			System.out.println("Usuario nao encontrado!\n");
+		} else {
+			int posicao = d.getUsuarios().indexOf(d.buscar_usuario(nome));
+			Usuario user = lerDadosUsuario();
+			d.getUsuarios().set(posicao, user);
+			System.out.println("Usuario editado com sucesso!\n");
+		}
+	}
+	
+	public static void exibirUsuario() {
+		System.out.println(d.listar_usuarios());
+		System.out.println("Digite exatamente o nome do usuario que deseja exibir:\n");
+		in.nextLine();
+		String nome = in.nextLine();
+		if (d.buscar_usuario(nome) == null) {
+			System.out.println("Usuario nao encontrado!\n");
+		} else {
+			System.out.println(d.buscar_usuario(nome).exibir_usuario());
+		}
 	}
 	
 	public static void exibirGaragem() {
@@ -373,15 +431,72 @@ public class Main {
 	}
 	
 	public static void editarAces() {
-		System.out.println("Teste editar acessorio");
+		System.out.println(d.listar_acessorios());
+		System.out.println("Digite exatamente o nome do acessorio que deseja editar:");
+		in.nextLine();
+		String nome = in.nextLine();
+		if (d.buscar_acessorio(nome) == null) {
+			System.out.println("Acessorio nao encontrado!\n");
+		} else {
+			int posicao = d.getAcessorios().indexOf(d.buscar_acessorio(nome));
+			Acessorio aces = lerDadosAcessorio();
+			d.getAcessorios().set(posicao, aces);
+			System.out.println("Acessorio editado com sucesso!\n");
+		}
+	}
+	
+	public static void exibirAces() {
+		System.out.println(d.listar_acessorios());
+		System.out.println("Digite exatamente o nome do acessorio que deseja exibir:");
+		in.nextLine();
+		String nome = in.nextLine();
+		if (d.buscar_acessorio(nome) == null) {
+			System.out.println("Acessorio nao encontrado!\n");
+		} else {
+			System.out.println(d.buscar_acessorio(nome).exibir_acessorio());
+		}
 	}
 	
 	public static void adicionarAcesMoto() {
-		System.out.println("Teste adicionar moto garagem");
+		System.out.println(d.listar_acessorios());
+		System.out.println("Digite exatamente o nome do acessorio que deseja adicionar:");
+		in.nextLine();
+		String nome = in.nextLine();
+		if (d.buscar_acessorio(nome) == null) {
+			System.out.println("Acessorio nao encontrado!\n");
+		} else {
+			System.out.println(d.listar_motos());
+			System.out.println("Digite exatamente o nome do modelo da motocicleta:");
+			in.nextLine();
+			String modelo = in.nextLine();
+			if (d.buscar_modelo(modelo)== null) {
+				System.out.println("Motocicleta nao encontrada!\n");
+			} else {
+				d.adicionar_acessorio_moto(d.buscar_acessorio(nome), d.buscar_modelo(modelo));
+				System.out.println("Acessorio adicionado com sucesso!\n");
+			}
+		}
 	}
 	
 	public static void removerAcesMoto() {
-		System.out.println("Teste adicionar moto garagem");
+		System.out.println(d.listar_acessorios());
+		System.out.println("Digite exatamente o nome do acessorio que deseja remover:");
+		in.nextLine();
+		String nome = in.nextLine();
+		if (d.buscar_acessorio(nome) == null) {
+			System.out.println("Acessorio nao encontrado!\n");
+		} else {
+			System.out.println(d.listar_motos());
+			System.out.println("Digite exatamente o nome do modelo da motocicleta:");
+			in.nextLine();
+			String modelo = in.nextLine();
+			if (d.buscar_modelo(modelo)== null) {
+				System.out.println("Motocicleta nao encontrada!\n");
+			} else {
+				d.remover_acessorio_moto(d.buscar_acessorio(nome), d.buscar_modelo(modelo));;
+				System.out.println("Acessorio removido com sucesso!\n");
+			}
+		}
 	}
 	
 	// Metodo para leitura de dados de um acessorio
