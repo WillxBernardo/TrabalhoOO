@@ -241,6 +241,7 @@ public class Main {
 			System.out.println("Motocicleta nao encontrada!\n");
 		} else {
 			int posicao = d.getMotocicletas().indexOf(d.buscar_modelo(modelo));
+			Acessorio aces = d.getMotocicletas().get(posicao).getAcessorio();
 			System.out.println("Digite o modelo da motocicleta:");
 			modelonovo = in.nextLine();
 			if (d.buscar_modelo(modelonovo) == null || modelonovo.equals(modelo)) {
@@ -252,6 +253,7 @@ public class Main {
 				System.out.println("Digite a cor da motocicleta:");
 				cor = in.nextLine();
 				Motocicleta moto = new Motocicleta(cor, valor, modelonovo, cilindrada);
+				moto.setAcessorio(aces);
 				d.getMotocicletas().set(posicao, moto);
 				System.out.println("Motocicleta editada com sucesso!\n");
 			} else {
@@ -273,13 +275,14 @@ public class Main {
 	}
 	
 	public static void adicionarMotoGaragem() {
+		System.out.println(d.listar_usuarios());
 		System.out.println("Digite exatamente o nome do usuario:\n");
 		in.nextLine();
 		String nome = in.nextLine();
 		Usuario user = d.buscar_usuario(nome);
 		if (user != null) {
+			System.out.println(d.listar_motos());
 			System.out.println("Digite exatamente o modelo da motocicleta que deseja adicionar:\n");
-			in.nextLine();
 			String modelo = in.nextLine();
 			Motocicleta moto = d.buscar_modelo(modelo);
 			if (moto != null) {
@@ -294,13 +297,14 @@ public class Main {
 	}
 	
 	public static void removerMotoGaragem() {
+		System.out.println(d.listar_usuarios());
 		System.out.println("Digite exatamente o nome do usuario:\n");
 		in.nextLine();
 		String nome = in.nextLine();
 		Usuario user = d.buscar_usuario(nome);
 		if (user != null) {
+			System.out.println(user.getGaragem().exibir_garagem());
 			System.out.println("Digite exatamente o modelo da motocicleta que deseja remover:\n");
-			in.nextLine();
 			String modelo = in.nextLine();
 			Motocicleta moto = d.buscar_modelo(modelo);
 			if (moto != null) {
@@ -405,7 +409,7 @@ public class Main {
 	
 	public static void exibirGaragem() {
 		System.out.println(d.listar_usuarios());
-		System.out.println("Digite exatamente o nome do usuario:");
+		System.out.println("\nDigite exatamente o nome do usuario:");
 		in.nextLine();
 		String nome = in.nextLine();
 		if (d.buscar_usuario(nome) != null) {
