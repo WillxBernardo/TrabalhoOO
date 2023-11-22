@@ -14,7 +14,7 @@ public class Main {
 		d.preencherDados();
 	
 		// Execução do menu
-		System.out.println("-----------------------------------------------");
+		System.out.println(".+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*");
 		System.out.println("  Bem vindo ao sistema da Triumphmotorcycles! ");
 		while(op != 0) {
 			System.out.println("-----------------------------------------------");
@@ -23,6 +23,7 @@ public class Main {
 			 switch (op) {
 			 	case 0:
 			 		System.out.println("Obrigado por utilizar o sistema!");
+			 		System.out.println(".+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*.+.*");
 			 		break;
 				case 1:
 					int op1 = -1;
