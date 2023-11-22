@@ -14,9 +14,10 @@ public class Main {
 		d.preencherDados();
 	
 		// Execução do menu
-
+		System.out.println("-----------------------------------------------");
+		System.out.println("  Bem vindo ao sistema da Triumphmotorcycles! ");
 		while(op != 0) {
-			System.out.println("----------------------------------------");
+			System.out.println("-----------------------------------------------");
 			System.out.print(imprimirMenu());
 			op = in.nextInt();
 			 switch (op) {
@@ -26,38 +27,38 @@ public class Main {
 				case 1:
 					int op1 = -1;
 					while(op1 != 0) {
-						System.out.println("----------------------------------------");
+						System.out.println("-----------------------------------------------");
 						System.out.println(imprimirMenuMoto());
 						op1 = in.nextInt();
 						 switch (op1) {
 						 	case 0:
 						 		break;
 						 	case 1:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		cadastrarMoto();
 						 		break;
 						 	case 2:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		removerMoto();
 						 		break;
 						 	case 3:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		editarMoto();
 						 		break;
 						 	case 4:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		System.out.println(d.listar_motos());
 						 		break;
 						 	case 5:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		exibirMoto();
 						 		break;
 						 	case 6:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		adicionarMotoGaragem();
 						 		break;
 						 	case 7:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		removerMotoGaragem();
 						 		break;
 						 	default:
@@ -71,38 +72,38 @@ public class Main {
 				case 2:
 					int op2 = -1;
 					while(op2 != 0) {
-						System.out.println("----------------------------------------");
+						System.out.println("----------------------------------------------- ");
 						System.out.println(imprimirMenuUser());
 						op2 = in.nextInt();
 						 switch (op2) {
 						 	case 0:
 						 		break;
 						 	case 1:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		cadastrarUser();
 						 		break;
 						 	case 2:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		removerUser();
 						 		break;
 						 	case 3:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		editarUser();
 						 		break;
 						 	case 4:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		System.out.println(d.listar_usuarios());
 						 		break;
 						 	case 5:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		exibirUsuario();
 						 		break;
 						 	case 6:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		exibirGaragem();
 						 		break;
 						 	case 7:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		finalizarPedido();
 						 		break;
 						 	default:
@@ -114,38 +115,38 @@ public class Main {
 				case 3:
 					int op3 = -1;
 					while(op3 != 0) {
-						System.out.println("----------------------------------------");
+						System.out.println("-----------------------------------------------");
 						System.out.println(imprimirMenuAces());
 						op3 = in.nextInt();
 						 switch (op3) {
 						 	case 0:
 						 		break;
 						 	case 1:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		cadastrarAces();
 						 		break;
 						 	case 2:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		removerAces();
 						 		break;
 						 	case 3:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		editarAces();
 						 		break;
 						 	case 4:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		System.out.println(d.listar_acessorios());
 						 		break;
 						 	case 5:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		exibirAces();
 						 		break;
 						 	case 6:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		adicionarAcesMoto();
 						 		break;
 						 	case 7:
-								System.out.println("----------------------------------------");
+						 		System.out.println("-----------------------------------------------");
 						 		removerAcesMoto();
 						 		break;
 						 	default:
