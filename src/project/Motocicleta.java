@@ -6,6 +6,7 @@ public class Motocicleta extends Produto{
 	private Acessorio acessorio;
 	
 	// Construtor
+	
 	public Motocicleta(String cor, double valor, String modelo, String cilindrada) {
 		super();
 		this.cor = cor;
@@ -42,13 +43,10 @@ public class Motocicleta extends Produto{
 		this.acessorio = acessorio;
 	}
 	
-	
 	// Métodos específicos da classe 
 	
 	public String exibir_moto() {
 		  String infoAces = acessorio != null ? ", acessorio: " + acessorio.getNome() : ", sem acessorio";
 		return "Modelo: " + modelo + ", preco: R$ " + valor + ", cor: " + cor + ", cilindrada: " + cilindrada + infoAces;
 	}
-
-	
 }

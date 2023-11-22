@@ -60,6 +60,9 @@ public class Main {
 								System.out.println("----------------------------------------");
 						 		removerMotoGaragem();
 						 		break;
+						 	default:
+								System.out.println("\nOpcao Invalida!\n");
+								break;
 						 		
 						 		
 						 }
@@ -102,6 +105,9 @@ public class Main {
 								System.out.println("----------------------------------------");
 						 		finalizarPedido();
 						 		break;
+						 	default:
+								System.out.println("\nOpcao Invalida!\n");
+								break;
 						 }
 					}
 					break;
@@ -142,6 +148,9 @@ public class Main {
 								System.out.println("----------------------------------------");
 						 		removerAcesMoto();
 						 		break;
+						 	default:
+								System.out.println("\nOpcao Invalida!\n");
+								break;
 						 		
 						 	}
 						 }
@@ -410,6 +419,7 @@ public class Main {
 				System.out.println("Digite o endereco do usuario:");
 				endereco = in.nextLine();
 				Usuario user = new Usuario(nomenovo, email, senha);
+				gar.setUsuario(user);
 				gar.setEndereco(endereco);
 				user.setGaragem(gar);
 				d.getUsuarios().set(posicao, user);

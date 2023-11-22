@@ -32,13 +32,10 @@ public class Acessorio extends Produto {
 		this.posicao = posicao;
 	}
 	
-
-	
 	
 	// Métodos específicos da classe
 	
 	public String exibir_acessorio() {
 		return "Nome do acessorio: " + nome + ", preco: R$ " + valor + ", cor: " + cor + ", posicao: " + posicao;
 	}
-	
 }

@@ -51,17 +51,18 @@ public class Garagem {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
-	
+
 	
 	// Métodos especificos da classe
 	
 	public String exibir_garagem() {
+		
 		String saida = "\nGaragem do usuario: " + usuario.getNome() +
-					"\nValor total: R$ " + valor_total + "\nEndereco: " + endereco + "\nLista de motos:";
+					"\nValor total: R$ " + valor_total + "\nEndereco: " + endereco + "\nLista de motocicletas e acessorios:";
         if (motocicletas != null) {
             for (Motocicleta moto : motocicletas) {
-                saida += "\n" + moto.getModelo();
+            	String infoAces = moto.getAcessorio() != null ? "\n" + moto.getAcessorio().getNome() + " - R$ " + moto.getAcessorio().getValor(): "";
+                saida += "\n" + moto.getModelo() + " - R$ " + moto.getValor() + infoAces;
             }
         }
 		return saida;
