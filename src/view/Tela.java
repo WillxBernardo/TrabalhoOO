@@ -1,6 +1,8 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import dados.Dados;
 import java.awt.event.*;
 
@@ -31,6 +33,9 @@ public class Tela implements ActionListener{
 		 f.add(bMenuAcessorio);
 		 bMenuAcessorio.setVisible(true);
 		 bMenuAcessorio.setBounds(200, 240, 200, 50);
+		 
+		 Border borda = BorderFactory.createLineBorder(Color.RED, 5);
+		 f.getRootPane().setBorder(borda);
 	}
 	public static void main (String[] args) {
 		Tela triumph = new Tela();
@@ -42,12 +47,12 @@ public class Tela implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Dados d = new Dados();
 		d.preencherDados();
-		if (e.getSource() == bMenuMoto) {			
+		if (e.getSource() == bMenuMoto) {
 			MenuMoto menumoto = new MenuMoto(d);
 		} else if (e.getSource() == bMenuUsuario) {
-			System.out.println("O botao DELETAR foi clicado");
+			MenuUsuario menuuser = new MenuUsuario(d);
 		} else if (e.getSource() == bMenuAcessorio) {
-			System.out.println("O botao EDITAR foi clicado");
+			MenuAces menuaces = new MenuAces(d);
 		}	
 	}
 	
